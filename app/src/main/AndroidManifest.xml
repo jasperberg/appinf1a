@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.DDB.hardwire.app" >
+    package="com.DDB" >
 
     <application
         android:allowBackup="true"
@@ -15,6 +15,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.DDB.hardwire.app.pb_builder"
+            android:label="@string/title_activity_pb_builder" >
         </activity>
     </application>
 
