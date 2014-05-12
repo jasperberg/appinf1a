@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/MyAppTheme" >
         <activity
             android:name="com.DDB.hardwire.app.MainActivity"
             android:label="@string/app_name" >
@@ -19,6 +19,14 @@
         <activity
             android:name="com.DDB.hardwire.app.pb_builder"
             android:label="@string/title_activity_pb_builder" >
+        </activity>
+        <activity
+            android:name="com.DDB.hardwire.app.my_computer"
+            android:label="@string/title_activity_my_computer" >
+        </activity>
+        <activity
+            android:name=".hardwire.app.inside_category"
+            android:label="@string/title_activity_inside_category" >
         </activity>
     </application>
 
