@@ -2,7 +2,6 @@ package com.DDB.hardwire.app;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import com.DDB.R;
-
 
 public class pb_builder extends Activity {
 
@@ -66,12 +64,18 @@ public class pb_builder extends Activity {
 
         // Adding child data
         List<String> Processor = new ArrayList<String>();
-        Processor.add("AMD");
-        Processor.add("Intel");
+        Processor.add("Socket AM3+");
+        Processor.add("Socket FM2+");
+        Processor.add("Socket 1150");
+        Processor.add("Socket 1155");
+        Processor.add("Socket 2011");
 
         List<String> Moederbord = new ArrayList<String>();
-        Moederbord.add("Asus");
-        Moederbord.add("Intel");
+        Moederbord.add("Socket AM3+");
+        Moederbord.add("Socket FM2+");
+        Moederbord.add("Socket 1150");
+        Moederbord.add("Socket 1155");
+        Moederbord.add("Socket 2011");
 
         List<String> Videokaart = new ArrayList<String>();
         Videokaart.add("AMD");
