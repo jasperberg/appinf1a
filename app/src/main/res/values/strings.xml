@@ -7,5 +7,7 @@
     <string name="title_activity_pb_builder">pb_builder</string>
     <string name="title_activity_my_computer">my_computer</string>
     <string name="title_activity_inside_category">inside_category</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_activity_splash_screen">splashScreen</string>
 
 </resources>

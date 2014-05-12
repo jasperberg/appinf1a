@@ -25,9 +25,17 @@
             android:label="@string/title_activity_my_computer" >
         </activity>
         <activity
-            android:name=".hardwire.app.inside_category"
+            android:name="com.DDB.hardwire.app.inside_category"
             android:label="@string/title_activity_inside_category" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".hardwire.app.splashScreen"
+            android:label="@string/title_activity_splash_screen" >
         </activity>
     </application>
-
 </manifest>
