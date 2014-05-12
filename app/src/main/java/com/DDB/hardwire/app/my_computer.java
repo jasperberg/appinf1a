@@ -3,14 +3,12 @@ package com.DDB.hardwire.app;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.DDB.R;
-
 
 public class my_computer extends Activity {
 
@@ -24,8 +22,6 @@ public class my_computer extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.my_computer, menu);
         return true;
     }
@@ -67,7 +63,6 @@ public class my_computer extends Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Do nothing
                 dialog.dismiss();
             }
         });
