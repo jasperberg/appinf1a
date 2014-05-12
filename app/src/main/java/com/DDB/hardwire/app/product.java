@@ -16,6 +16,14 @@ public class product {
         this.productPrice = productPrice;
     }
 
+    public void setListId(String listId) {
+        this.listId = listId;
+    }
+
+    public String getListId() {
+        return listId;
+    }
+
     public void setProductName(String productName) {
         this.productName = productName;
     }

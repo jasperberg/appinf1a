@@ -22,6 +22,8 @@ public class inside_category extends Activity {
     private static String _category;
     List<product> Products = new ArrayList<product>();
     ListView productListView;
+    List<product> productCategory = new ArrayList<product>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +61,19 @@ public class inside_category extends Activity {
     }
 
     public void addProduct(){
-        Products.add(new product("Intel",1, "i7", "Dayum", 430));
-        Products.add(new product("Intel",2, "i5", "Not that dayum", 200));
+        Products.add(new product("Socket AM3+",1, "i7", "Dayum", 430));
+        Products.add(new product("Socket 2011",2, "i5", "Not that dayum", 200));
+        Products.add(new product("AMD",1, "i7", "Dayum", 430));
+        Products.add(new product("Nvidia",2, "i5", "Not that dayum", 200));
+        Products.add(new product("DDR2",1, "i7", "Dayum", 430));
+        Products.add(new product("ATX",2, "i5", "Not that dayum", 200));
+
+        int listLength = Products.size();
+        for(int i = 0; i < listLength; i++){
+            if(Products.get(i).getListId().contains(_category)){
+                productCategory.add(Products.get(i));
+            }
+        }
     }
 
     public void populateList(){
@@ -75,7 +88,7 @@ public class inside_category extends Activity {
 
     private class ProductListAdapter extends ArrayAdapter<product>{
         public ProductListAdapter(){
-            super (inside_category.this, R.layout.product, Products);
+            super (inside_category.this, R.layout.product, productCategory);
         }
 
         @Override
@@ -83,7 +96,7 @@ public class inside_category extends Activity {
             if (view == null)
                 view = getLayoutInflater().inflate(R.layout.product, parent, false);
 
-            product prod = Products.get(position);
+            product prod = productCategory.get(position);
 
             TextView name = (TextView) view.findViewById(R.id.productTitle);
             name.setText(prod.getProductName());

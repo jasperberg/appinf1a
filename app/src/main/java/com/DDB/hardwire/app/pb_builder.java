@@ -42,7 +42,8 @@ public class pb_builder extends Activity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,int childPosition,long id) {
                 inside_category product = new inside_category();
-                product.setCategory(listDataHeader.get(groupPosition) + " - " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
+                product.setTitle(listDataHeader.get(groupPosition) + " - " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
+                product.setCategory(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
                 Intent intent = new Intent(pb_builder.this, inside_category.class);
                 startActivity(intent);
             return false;
@@ -54,7 +55,6 @@ public class pb_builder extends Activity {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        // Adding child data
         listDataHeader.add("Processor");
         listDataHeader.add("Moederbord");
         listDataHeader.add("Videokaart");
@@ -62,7 +62,6 @@ public class pb_builder extends Activity {
         listDataHeader.add("Opslag");
         listDataHeader.add("Behuizing");
 
-        // Adding child data
         List<String> Processor = new ArrayList<String>();
         Processor.add("Socket AM3+");
         Processor.add("Socket FM2+");
