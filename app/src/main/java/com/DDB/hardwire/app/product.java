@@ -5,10 +5,11 @@ package com.DDB.hardwire.app;
  */
 public class product {
 
-    String productName, productDescription;
+    String productName, productDescription, listId;
     int productPrice, id;
 
-    public product(int id, String productName, String productDescription, int productPrice) {
+    public product(String listId, int id, String productName, String productDescription, int productPrice) {
+        this.listId = listId;
         this.id = id;
         this.productName = productName;
         this.productDescription = productDescription;

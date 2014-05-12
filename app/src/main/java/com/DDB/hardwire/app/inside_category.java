@@ -60,8 +60,8 @@ public class inside_category extends Activity {
     }
 
     public void addProduct(){
-        Products.add(new product(1, "i7", "Dayum", 430));
-        Products.add(new product(2, "i5", "Not that dayum", 200));
+        Products.add(new product("Intel",1, "i7", "Dayum", 430));
+        Products.add(new product("Intel",2, "i5", "Not that dayum", 200));
     }
 
     public void populateList(){
