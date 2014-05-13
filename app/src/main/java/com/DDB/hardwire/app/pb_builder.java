@@ -41,9 +41,9 @@ public class pb_builder extends Activity {
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,int childPosition,long id) {
-                inside_category product = new inside_category();
-                product.setTitle(listDataHeader.get(groupPosition) + " - " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
-                product.setCategory(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
+                inside_category productListViewer = new inside_category();
+                productListViewer.setTitle(listDataHeader.get(groupPosition) + " - " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
+                productListViewer.setCategory(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
                 Intent intent = new Intent(pb_builder.this, inside_category.class);
                 startActivity(intent);
             return false;

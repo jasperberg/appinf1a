@@ -1,28 +1,33 @@
 package com.DDB.hardwire.app;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.DDB.R;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class inside_category extends Activity {
+public class inside_category extends Activity implements Serializable {
 
     private static String _category;
     List<product> Products = new ArrayList<product>();
     ListView productListView;
-    List<product> productCategory = new ArrayList<product>();
+    private List<product> productCategory = new ArrayList<product>();
 
 
     @Override
@@ -33,6 +38,17 @@ public class inside_category extends Activity {
         productListView = (ListView) findViewById(R.id.listView);
         addProduct();
         populateList();
+
+        productListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(inside_category.this, product_view.class);
+                int productid = productCategory.get(position).getId();
+                intent.putExtra("Product", productid);
+                intent.putExtra("data", new DataWrapper(productCategory));
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -56,17 +72,22 @@ public class inside_category extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public List<product> getProductCategory(){
+        return productCategory;
+    }
+
     public static void setCategory(String category){
         _category = category;
     }
 
     public void addProduct(){
-        Products.add(new product("Socket AM3+",1, "i7", "Dayum", 430));
+        Products.add(new product("Socket AM3+",0, "i7", "Dayum", 430));
+        Products.add(new product("Socket AM3+",1, "Cool", "yeah", 430));
         Products.add(new product("Socket 2011",2, "i5", "Not that dayum", 200));
-        Products.add(new product("AMD",1, "i7", "Dayum", 430));
-        Products.add(new product("Nvidia",2, "i5", "Not that dayum", 200));
-        Products.add(new product("DDR2",1, "i7", "Dayum", 430));
-        Products.add(new product("ATX",2, "i5", "Not that dayum", 200));
+        Products.add(new product("AMD",3, "i7", "Dayum", 430));
+        Products.add(new product("Nvidia",4, "i5", "Not that dayum", 200));
+        Products.add(new product("DDR2",5, "i7", "Dayum", 430));
+        Products.add(new product("ATX",6, "i5", "Not that dayum", 200));
 
         int listLength = Products.size();
         for(int i = 0; i < listLength; i++){
@@ -76,7 +97,7 @@ public class inside_category extends Activity {
         }
     }
 
-    public void populateList(){
+    private void populateList(){
         ArrayAdapter<product> adapter = new ProductListAdapter();
         productListView.setAdapter(adapter);
     }
@@ -92,6 +113,12 @@ public class inside_category extends Activity {
         }
 
         @Override
+        public long getItemId(int position){
+            // return the id(), or whatever you use to access the id on your product object
+            return productCategory.get(position).getId();
+        }
+
+        @Override
         public View getView(int position, View view, ViewGroup parent) {
             if (view == null)
                 view = getLayoutInflater().inflate(R.layout.product, parent, false);
@@ -102,6 +129,8 @@ public class inside_category extends Activity {
             name.setText(prod.getProductName());
             TextView price = (TextView) view.findViewById(R.id.productPrice);
             price.setText("€"+prod.getProductPrice());
+
+
 
             return view;
         }

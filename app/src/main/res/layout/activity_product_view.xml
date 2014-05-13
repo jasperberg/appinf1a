@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Title"
+            android:id="@+id/productNameTitle"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="40dp" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/noimage" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="typeId"
+            android:id="@+id/productTypeId"
+            android:layout_gravity="center_horizontal|top"
+            android:gravity="bottom" />
+
+        <TextView
+            android:layout_width="121dp"
+            android:layout_height="118dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Price"
+            android:id="@+id/productPriceView"
+            android:layout_gravity="right|top"
+            android:gravity="center" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add to build"
+            android:id="@+id/btnAddToBuild"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="217dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Omschrijving"
+            android:id="@+id/productDescriptionView"
+            android:layout_gravity="left|center_vertical" />
+    </FrameLayout>
+</LinearLayout>
