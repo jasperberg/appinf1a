@@ -11,19 +11,21 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go"
+        android:text="Artikelen"
         android:id="@+id/go"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="sendMessage" />
+        android:onClick="sendMessage"
+        android:layout_alignTop="@+id/btnMyComputer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My computer"
+        android:text="PC builder"
         android:id="@+id/btnMyComputer"
-        android:layout_below="@+id/go"
-        android:layout_centerHorizontal="true"
-        android:onClick="openMyComputer" />
+        android:onClick="openMyComputer"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
