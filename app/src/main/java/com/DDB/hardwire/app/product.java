@@ -1,9 +1,13 @@
 package com.DDB.hardwire.app;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Created by MarK on 09-May-14.
  */
-public class product {
+public class product implements Serializable{
 
     String productName, productDescription, listId;
     int productPrice, id;
@@ -55,4 +59,6 @@ public class product {
     public int getId(){
         return id;
     }
+
+
 }
