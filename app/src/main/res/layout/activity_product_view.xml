@@ -10,18 +10,18 @@
         android:layout_height="fill_parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="269dp"
+            android:layout_height="31dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Title"
             android:id="@+id/productNameTitle"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="right"
             android:textStyle="bold"
-            android:textSize="40dp" />
+            android:textSize="20dp" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:id="@+id/imageView"
             android:src="@drawable/noimage" />
 
@@ -52,7 +52,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="217dp"
+            android:layout_height="334dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Omschrijving"
             android:id="@+id/productDescriptionView"

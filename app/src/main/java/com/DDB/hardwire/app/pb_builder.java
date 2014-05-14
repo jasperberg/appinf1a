@@ -70,11 +70,11 @@ public class pb_builder extends Activity {
         Processor.add("Socket 2011");
 
         List<String> Moederbord = new ArrayList<String>();
-        Moederbord.add("Socket AM3+");
-        Moederbord.add("Socket FM2+");
-        Moederbord.add("Socket 1150");
-        Moederbord.add("Socket 1155");
-        Moederbord.add("Socket 2011");
+        Moederbord.add("MB Socket AM3+");
+        Moederbord.add("MB Socket FM2+");
+        Moederbord.add("MB Socket 1150");
+        Moederbord.add("MB Socket 1155");
+        Moederbord.add("MB Socket 2011");
 
         List<String> Videokaart = new ArrayList<String>();
         Videokaart.add("AMD");

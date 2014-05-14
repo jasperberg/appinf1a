@@ -10,5 +10,6 @@
     <string name="title_activity_main2">MainActivity</string>
     <string name="title_activity_splash_screen">splashScreen</string>
     <string name="title_activity_product_view">product_view</string>
+    <string name="title_activity_about">about</string>
 
 </resources>
