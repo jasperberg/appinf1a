@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.DDB.R;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class product_view extends Activity implements Serializable {
@@ -17,6 +20,7 @@ public class product_view extends Activity implements Serializable {
     String Name, Description, ListId;
     int Price, currentProductId;
     List<product> prodCat;
+    List<product> currProd = new ArrayList<product>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,8 @@ public class product_view extends Activity implements Serializable {
 
         product currentProduct = new product(ListId, currentProductId, Name, Description, Price);
 
+        currProd.add(new product(ListId, currentProductId, Name, Description, Price));
+
         setTitle(currentProduct.getProductName());
 
         TextView name = (TextView) findViewById(R.id.productNameTitle);
@@ -72,6 +78,11 @@ public class product_view extends Activity implements Serializable {
         productType.setText(currentProduct.getListId());
         TextView description = (TextView) findViewById(R.id.productDescriptionView);
         description.setText(currentProduct.getProductDescription());
+    }
+
+    public void addProductToBuild(View view){
+        MainActivity.addProduct(currProd.get(0));
+        Toast.makeText(getApplicationContext(), "Product has been added to your build", Toast.LENGTH_SHORT).show();
     }
 }
 

@@ -14,8 +14,6 @@ import java.util.ArrayList;
 
 public class my_computer extends Activity {
 
-    ArrayList<product> build = new ArrayList<product>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,10 +43,6 @@ public class my_computer extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void addProduct(product product){
-        build.add(product);
     }
 
     public void deleteDialog(){

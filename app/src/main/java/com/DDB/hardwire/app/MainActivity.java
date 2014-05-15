@@ -8,8 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import com.DDB.R;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends Activity {
+
+    static ArrayList<product> build = new ArrayList<product>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,5 +54,9 @@ public class MainActivity extends Activity {
     {
         Intent intent = new Intent(MainActivity.this, about.class);
         startActivity(intent);
+    }
+
+    public static void addProduct(product product){
+        build.add(product);
     }
 }

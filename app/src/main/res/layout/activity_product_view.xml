@@ -48,7 +48,8 @@
             android:layout_height="wrap_content"
             android:text="Add to build"
             android:id="@+id/btnAddToBuild"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_gravity="center_horizontal|bottom"
+            android:onClick="addProductToBuild" />
 
         <TextView
             android:layout_width="match_parent"
