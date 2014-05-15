@@ -69,7 +69,11 @@ public class my_computer extends Activity {
 
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(getApplicationContext(), "Build deleted", Toast.LENGTH_LONG).show();
-
+                MainActivity.deleteBuild();
+                build = MainActivity.getBuild();
+                MainActivity.setBuildName("Click to change name");
+                populateList();
+                changeTitle();
                 dialog.dismiss();
             }
 
@@ -92,6 +96,7 @@ public class my_computer extends Activity {
         TextView name = (TextView) findViewById(R.id.computerName);
         name.setText(Name);
         MainActivity.setBuildName(Name);
+        changeTitle();
     }
 
     private void populateList(){
@@ -99,6 +104,7 @@ public class my_computer extends Activity {
         myComputerView.setAdapter(adapter);
         TextView title = (TextView) findViewById(R.id.computerName);
         title.setText(MainActivity.getBuildName());
+        changeTitle();
     }
 
     private class myComputerAdapter extends ArrayAdapter<product> {
@@ -134,6 +140,7 @@ public class my_computer extends Activity {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String value = input.getText().toString();
                 my_computer.this.setBuildName(value);
+                changeTitle();
             }
         });
 
@@ -144,5 +151,14 @@ public class my_computer extends Activity {
         });
 
         alert.show();
+    }
+
+    public void changeTitle(){
+        if(MainActivity.getBuildName()=="Click to change name"){
+            setTitle("Your saved build");
+        }
+        else{
+            setTitle(MainActivity.getBuildName());
+        }
     }
 }

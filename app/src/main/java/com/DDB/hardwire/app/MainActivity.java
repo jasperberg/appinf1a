@@ -52,4 +52,8 @@ public class MainActivity extends Activity {
     public static String getBuildName(){
         return buildName;
     }
+
+    public static void deleteBuild(){
+        build.clear();
+    }
 }
