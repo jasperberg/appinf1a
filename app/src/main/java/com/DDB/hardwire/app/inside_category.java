@@ -38,6 +38,7 @@ public class inside_category extends Activity implements Serializable {
         productListView = (ListView) findViewById(R.id.listView);
         addProduct();
         populateList();
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         productListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

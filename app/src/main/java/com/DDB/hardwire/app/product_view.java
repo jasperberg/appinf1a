@@ -25,6 +25,7 @@ public class product_view extends Activity implements Serializable {
         DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("data");
         prodCat = dw.getProductCategory();
         populate();
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
