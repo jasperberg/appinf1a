@@ -24,6 +24,7 @@ public class pb_builder extends Activity {
         super.onCreate(savedInstanceState);
         setTitle("Computer Builder");
         setContentView(R.layout.activity_pb_builder);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.lvExp);

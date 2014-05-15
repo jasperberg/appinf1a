@@ -19,6 +19,7 @@ public class my_computer extends Activity {
         super.onCreate(savedInstanceState);
         setTitle("Your saved build");
         setContentView(R.layout.activity_my_computer);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
