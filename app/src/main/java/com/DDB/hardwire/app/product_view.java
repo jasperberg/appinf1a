@@ -83,6 +83,7 @@ public class product_view extends Activity implements Serializable {
 
     public void addProductToBuild(View view){
         MainActivity.addProduct(currProd.get(0));
+        pb_builder.prepareListData();
         Toast.makeText(getApplicationContext(), "Product has been added to your build", Toast.LENGTH_SHORT).show();
     }
 }
