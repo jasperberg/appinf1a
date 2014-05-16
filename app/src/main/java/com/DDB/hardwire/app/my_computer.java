@@ -6,6 +6,12 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.DDB.R;
@@ -14,12 +20,19 @@ import java.util.ArrayList;
 
 public class my_computer extends Activity {
 
+    private String buildName;
+    ArrayList<product> build = new ArrayList<product>();
+    ListView myComputerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Your saved build");
         setContentView(R.layout.activity_my_computer);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        build = MainActivity.getBuild();
+        myComputerView = (ListView) findViewById(R.id.computerListView);
+        populateList();
     }
 
 
@@ -56,7 +69,11 @@ public class my_computer extends Activity {
 
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(getApplicationContext(), "Build deleted", Toast.LENGTH_LONG).show();
-
+                MainActivity.deleteBuild();
+                build = MainActivity.getBuild();
+                MainActivity.setBuildName("Click to change name");
+                populateList();
+                changeTitle();
                 dialog.dismiss();
             }
 
@@ -72,5 +89,76 @@ public class my_computer extends Activity {
 
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    public void setBuildName(String Name) {
+        buildName = Name;
+        TextView name = (TextView) findViewById(R.id.computerName);
+        name.setText(Name);
+        MainActivity.setBuildName(Name);
+        changeTitle();
+    }
+
+    private void populateList(){
+        ArrayAdapter<product> adapter = new myComputerAdapter();
+        myComputerView.setAdapter(adapter);
+        TextView title = (TextView) findViewById(R.id.computerName);
+        title.setText(MainActivity.getBuildName());
+        changeTitle();
+    }
+
+    private class myComputerAdapter extends ArrayAdapter<product> {
+        public myComputerAdapter(){
+            super (my_computer.this, R.layout.product, build);
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup parent) {
+            if (view == null)
+                view = getLayoutInflater().inflate(R.layout.product, parent, false);
+
+            product prod = build.get(position);
+
+            TextView name = (TextView) view.findViewById(R.id.productTitle);
+            name.setText(prod.getProductName());
+            TextView price = (TextView) view.findViewById(R.id.productPrice);
+            price.setText("€"+prod.getProductPrice());
+            return view;
+        }
+    }
+
+    public void changeName(View view){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Rename");
+        alert.setMessage("What do you want to name your build?");
+
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String value = input.getText().toString();
+                my_computer.this.setBuildName(value);
+                changeTitle();
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+
+        alert.show();
+    }
+
+    public void changeTitle(){
+        if(MainActivity.getBuildName()=="Click to change name"){
+            setTitle("Your saved build");
+        }
+        else{
+            setTitle(MainActivity.getBuildName());
+        }
     }
 }

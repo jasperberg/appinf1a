@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class MainActivity extends Activity {
 
     static ArrayList<product> build = new ArrayList<product>();
+    private static String buildName = "Click to change name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,5 +39,21 @@ public class MainActivity extends Activity {
 
     public static void addProduct(product product){
         build.add(product);
+    }
+
+    public static ArrayList<product> getBuild(){
+        return build;
+    }
+
+    public static void setBuildName(String Name){
+        buildName = Name;
+    }
+
+    public static String getBuildName(){
+        return buildName;
+    }
+
+    public static void deleteBuild(){
+        build.clear();
     }
 }
