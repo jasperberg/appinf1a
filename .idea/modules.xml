@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HardWire.iml" filepath="$PROJECT_DIR$/HardWire.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hardwire.iml" filepath="$PROJECT_DIR$/Hardwire.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
