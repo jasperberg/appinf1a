@@ -16,8 +16,8 @@ public class pb_builder extends Activity {
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    static List<String> listDataHeader;
+    static HashMap<String, List<String>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,19 +25,11 @@ public class pb_builder extends Activity {
         setTitle("Computer Builder");
         setContentView(R.layout.activity_pb_builder);
         getActionBar().setDisplayHomeAsUpEnabled(true);
-
-        // get the listview
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
-
-        // preparing list data
         prepareListData();
-
+        MainActivity.indexAddedProducts();
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
         expListView.setAdapter(listAdapter);
-
-
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
@@ -45,14 +37,22 @@ public class pb_builder extends Activity {
                 inside_category productListViewer = new inside_category();
                 productListViewer.setTitle(listDataHeader.get(groupPosition) + " - " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
                 productListViewer.setCategory(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
+                closeList();
                 Intent intent = new Intent(pb_builder.this, inside_category.class);
                 startActivity(intent);
-            return false;
+                return false;
             }
         });
     }
 
-    private void prepareListData() {
+    public void closeList(){
+        for(int i = 0; i < 6; i++)
+        expListView.collapseGroup(i);
+    }
+
+    public static void prepareListData() {
+        String addedProcessor = MainActivity.getAddedProcessor();
+        String addedMotherboard = MainActivity.getAddedMotherboard();
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
@@ -64,18 +64,52 @@ public class pb_builder extends Activity {
         listDataHeader.add("Behuizing");
 
         List<String> Processor = new ArrayList<String>();
-        Processor.add("Socket AM3+");
-        Processor.add("Socket FM2+");
-        Processor.add("Socket 1150");
-        Processor.add("Socket 1155");
-        Processor.add("Socket 2011");
+        if(addedMotherboard == "Empty") {
+            Processor.add("Socket AM3+");
+            Processor.add("Socket FM2+");
+            Processor.add("Socket 1150");
+            Processor.add("Socket 1155");
+            Processor.add("Socket 2011");
+        }
+        else if(addedMotherboard == "MB Socket AM3+"){
+            Processor.add("MB Socket AM3+");
+        }
+        else if(addedMotherboard == "MB Socket FM2+"){
+            Processor.add("MB Socket FM2+");
+        }
+        else if(addedMotherboard == "MB Socket 1150"){
+            Processor.add("MB Socket 1150");
+        }
+        else if(addedMotherboard == "MB Socket 1155"){
+            Processor.add("MB Socket 1155");
+        }
+        else if(addedMotherboard == "MB Socket 2011"){
+            Processor.add("MB Socket 2011");
+        }
 
         List<String> Moederbord = new ArrayList<String>();
-        Moederbord.add("MB Socket AM3+");
-        Moederbord.add("MB Socket FM2+");
-        Moederbord.add("MB Socket 1150");
-        Moederbord.add("MB Socket 1155");
-        Moederbord.add("MB Socket 2011");
+        if(addedProcessor == "Empty") {
+            Moederbord.add("MB Socket AM3+");
+            Moederbord.add("MB Socket FM2+");
+            Moederbord.add("MB Socket 1150");
+            Moederbord.add("MB Socket 1155");
+            Moederbord.add("MB Socket 2011");
+        }
+        else if(addedProcessor == "Socket AM3+"){
+            Moederbord.add("MB Socket AM3+");
+        }
+        else if(addedProcessor == "Socket FM2+"){
+            Moederbord.add("MB Socket FM2+");
+        }
+        else if(addedProcessor == "Socket 1150"){
+            Moederbord.add("MB Socket 1150");
+        }
+        else if(addedProcessor == "Socket 1155"){
+            Moederbord.add("MB Socket 1155");
+        }
+        else if(addedProcessor == "Socket 2011"){
+            Moederbord.add("MB Socket 2011");
+        }
 
         List<String> Videokaart = new ArrayList<String>();
         Videokaart.add("AMD");
