@@ -1,0 +1,8 @@
+.gradle
+/local.properties
+/.idea/workspace.xml
+.DS_Store
+.idea/gradle.xml
+.idea/libraries/appcompat_v7_19_0_1.xml
+.idea/libraries/support_v4_19_0_1.xml
+appinf1a.iml
