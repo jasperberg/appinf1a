@@ -3,11 +3,13 @@ package com.DDB.hardwire.app;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,7 +23,7 @@ import java.util.ArrayList;
 public class my_computer extends Activity {
 
     private String buildName;
-    ArrayList<product> build = new ArrayList<product>();
+    static ArrayList<product> build = new ArrayList<product>();
     ListView myComputerView;
 
     @Override
@@ -33,8 +35,25 @@ public class my_computer extends Activity {
         build = MainActivity.getBuild();
         myComputerView = (ListView) findViewById(R.id.computerListView);
         populateList();
+
+        myComputerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Intent intent = new Intent(my_computer.this, product_view.class);
+                int productid = build.get(position).getId();
+                intent.putExtra("Product", productid);
+                intent.putExtra("data", new DataWrapper(build));
+                intent.putExtra("method", "true");
+                startActivity(intent);
+            }
+        });
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        populateList();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,6 +89,8 @@ public class my_computer extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(getApplicationContext(), "Build deleted", Toast.LENGTH_LONG).show();
                 MainActivity.deleteBuild();
+                MainActivity.setAddedMotherboard("Empty");
+                MainActivity.setAddedProcessor("Empty");
                 build = MainActivity.getBuild();
                 MainActivity.setBuildName("Click to change name");
                 populateList();
@@ -99,7 +120,7 @@ public class my_computer extends Activity {
         changeTitle();
     }
 
-    private void populateList(){
+    public void populateList(){
         ArrayAdapter<product> adapter = new myComputerAdapter();
         myComputerView.setAdapter(adapter);
         TextView title = (TextView) findViewById(R.id.computerName);
@@ -159,6 +180,14 @@ public class my_computer extends Activity {
         }
         else{
             setTitle(MainActivity.getBuildName());
+        }
+    }
+
+    public static void deleteProduct(int productId){
+        for(int i = 0; i < build.size(); i++){
+            if(build.get(i).getId() == productId){
+                build.remove(i);
+            }
         }
     }
 }

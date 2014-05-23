@@ -1,6 +1,7 @@
 package com.DDB.hardwire.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,17 +22,21 @@ public class product_view extends Activity implements Serializable {
     int Price, currentProductId;
     List<product> prodCat;
     List<product> currProd = new ArrayList<product>();
+    String methodText;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_view);
         currentProductId = getIntent().getIntExtra("Product", 0);
+        methodText = getIntent().getStringExtra("method");
+        if(methodText.equals("true")){
+            changeButtonSpecs();
+        }
         DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("data");
         prodCat = dw.getProductCategory();
         populate();
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -134,6 +139,24 @@ public class product_view extends Activity implements Serializable {
             }
         }
     }
+
+    public void removeFromBuild(){
+        my_computer.deleteProduct(currentProductId);
+    }
+
+    public void changeButtonSpecs(){
+        Button btn = (Button) findViewById(R.id.btnAddToBuild);
+        btn.setText("Verwijder uit build");
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "hoi", Toast.LENGTH_SHORT).show();
+                removeFromBuild();
+            }
+        });
+    }
 }
+
+
 
 

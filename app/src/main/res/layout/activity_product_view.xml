@@ -46,7 +46,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add to build"
+            android:text="Aan build toevoegen"
             android:id="@+id/btnAddToBuild"
             android:layout_gravity="center_horizontal|bottom"
             android:onClick="addProductToBuild" />

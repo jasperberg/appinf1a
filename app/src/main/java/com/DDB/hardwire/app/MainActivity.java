@@ -99,4 +99,12 @@ public class MainActivity extends Activity {
     public static String getAddedMotherboard(){
         return addedMotherboard;
     }
+
+    public static void setAddedProcessor(String proc){
+        addedProcessor = proc;
+    }
+
+    public static void setAddedMotherboard(String mod){
+        addedProcessor = mod;
+    }
 }
