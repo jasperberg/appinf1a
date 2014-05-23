@@ -42,7 +42,6 @@ public class MyComputer extends Activity {
                 Intent intent = new Intent(MyComputer.this, ProductView.class);
                 int productid = build.get(position).getId();
                 intent.putExtra("Product", productid);
-                intent.putExtra("data", new DataWrapper(build));
                 intent.putExtra("method", "true");
                 startActivity(intent);
             }

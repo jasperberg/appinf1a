@@ -16,11 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductView extends Activity implements Serializable {
-    //Product currentProduct = (Product) getIntent().getSerializableExtra("Product");
     String Name, Description, ListId;
     int currentProductId;
     double Price;
-    List<Product> prodCat;
+    List<Product> Products;
     List<Product> currProd = new ArrayList<Product>();
     String methodText;
 
@@ -32,8 +31,7 @@ public class ProductView extends Activity implements Serializable {
         if(methodText.equals("true")){
             changeButtonSpecs();
         }
-        DataWrapper dw = (DataWrapper) getIntent().getSerializableExtra("data");
-        prodCat = dw.getProductCategory();
+        Products = GetItems.getProductLister();
         populate();
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -60,13 +58,13 @@ public class ProductView extends Activity implements Serializable {
 
     private void populate(){
 
-        int size = prodCat.size();
+        int size = Products.size();
         for(int i = 0; i < size; i++ ){
-            if(prodCat.get(i).getId() == currentProductId){
-                Name = prodCat.get(i).getProductName();
-                Price = prodCat.get(i).getProductPrice();
-                Description = prodCat.get(i).getProductDescription();
-                ListId = prodCat.get(i).getListId();
+            if(Products.get(i).getId() == currentProductId){
+                Name = Products.get(i).getProductName();
+                Price = Products.get(i).getProductPrice();
+                Description = Products.get(i).getProductDescription();
+                ListId = Products.get(i).getListId();
             }
         }
 

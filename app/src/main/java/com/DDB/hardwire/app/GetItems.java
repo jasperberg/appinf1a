@@ -75,4 +75,6 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
     public static List<Product> getProductLister(){
         return productLister;
     }
+
+
 }
