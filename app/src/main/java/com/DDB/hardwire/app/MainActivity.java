@@ -59,34 +59,34 @@ public class MainActivity extends Activity {
 
     public static void indexAddedProducts(){
         for(int i = 0; i < build.size(); i++){
-            if(build.get(i).getListId()=="Socket AM3+"){
+            if(build.get(i).getListId().equals("Socket AM3+")){
                 addedProcessor = "Socket AM3+";
             }
-            else if(build.get(i).getListId()=="Socket FM2+"){
+            else if(build.get(i).getListId().equals("Socket FM2+")){
                 addedProcessor = "Socket FM2+";
             }
-            else if(build.get(i).getListId()=="Socket 1150"){
+            else if(build.get(i).getListId().equals("Socket 1150")){
                 addedProcessor = "Socket 1150";
             }
-            else if(build.get(i).getListId()=="Socket 1155"){
+            else if(build.get(i).getListId().equals("Socket 1155")){
                 addedProcessor = "Socket 1155";
             }
-            else if(build.get(i).getListId()=="Socket 2011"){
+            else if(build.get(i).getListId().equals("Socket 2011")){
                 addedProcessor = "Socket 2011";
             }
-            else if(build.get(i).getListId()=="MB Socket AM3+"){
+            else if(build.get(i).getListId().equals("MB Socket AM3+")){
                 addedMotherboard = "MB Socket AM3+";
             }
-            else if(build.get(i).getListId()=="MB Socket FM2+"){
+            else if(build.get(i).getListId().equals("MB Socket FM2+")){
                 addedMotherboard = "MB Socket FM2+";
             }
-            else if(build.get(i).getListId()=="MB Socket 1150"){
+            else if(build.get(i).getListId().equals("MB Socket 1150")){
                 addedMotherboard = "MB Socket 1150";
             }
-            else if(build.get(i).getListId()=="MB Socket 1155"){
+            else if(build.get(i).getListId().equals("MB Socket 1155")){
                 addedMotherboard = "MB Socket 1155";
             }
-            else if(build.get(i).getListId()=="MB Socket 2011"){
+            else if(build.get(i).getListId().equals("MB Socket 2011")){
                 addedMotherboard = "MB Socket 2011";
             }
         }

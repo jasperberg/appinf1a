@@ -51,8 +51,6 @@ public class pb_builder extends Activity {
     }
 
     public static void prepareListData() {
-        String addedProcessor = MainActivity.getAddedProcessor();
-        String addedMotherboard = MainActivity.getAddedMotherboard();
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
@@ -64,52 +62,18 @@ public class pb_builder extends Activity {
         listDataHeader.add("Behuizing");
 
         List<String> Processor = new ArrayList<String>();
-        if(addedMotherboard == "Empty") {
-            Processor.add("Socket AM3+");
-            Processor.add("Socket FM2+");
-            Processor.add("Socket 1150");
-            Processor.add("Socket 1155");
-            Processor.add("Socket 2011");
-        }
-        else if(addedMotherboard == "MB Socket AM3+"){
-            Processor.add("MB Socket AM3+");
-        }
-        else if(addedMotherboard == "MB Socket FM2+"){
-            Processor.add("MB Socket FM2+");
-        }
-        else if(addedMotherboard == "MB Socket 1150"){
-            Processor.add("MB Socket 1150");
-        }
-        else if(addedMotherboard == "MB Socket 1155"){
-            Processor.add("MB Socket 1155");
-        }
-        else if(addedMotherboard == "MB Socket 2011"){
-            Processor.add("MB Socket 2011");
-        }
+        Processor.add("Socket AM3+");
+        Processor.add("Socket FM2+");
+        Processor.add("Socket 1150");
+        Processor.add("Socket 1155");
+        Processor.add("Socket 2011");
 
         List<String> Moederbord = new ArrayList<String>();
-        if(addedProcessor == "Empty") {
-            Moederbord.add("MB Socket AM3+");
-            Moederbord.add("MB Socket FM2+");
-            Moederbord.add("MB Socket 1150");
-            Moederbord.add("MB Socket 1155");
-            Moederbord.add("MB Socket 2011");
-        }
-        else if(addedProcessor == "Socket AM3+"){
-            Moederbord.add("MB Socket AM3+");
-        }
-        else if(addedProcessor == "Socket FM2+"){
-            Moederbord.add("MB Socket FM2+");
-        }
-        else if(addedProcessor == "Socket 1150"){
-            Moederbord.add("MB Socket 1150");
-        }
-        else if(addedProcessor == "Socket 1155"){
-            Moederbord.add("MB Socket 1155");
-        }
-        else if(addedProcessor == "Socket 2011"){
-            Moederbord.add("MB Socket 2011");
-        }
+        Moederbord.add("MB Socket AM3+");
+        Moederbord.add("MB Socket FM2+");
+        Moederbord.add("MB Socket 1150");
+        Moederbord.add("MB Socket 1155");
+        Moederbord.add("MB Socket 2011");
 
         List<String> Videokaart = new ArrayList<String>();
         Videokaart.add("AMD");
