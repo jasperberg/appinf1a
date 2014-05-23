@@ -36,17 +36,11 @@ public class PcBuilder extends Activity {
                 Inside_category productListViewer = new Inside_category();
                 productListViewer.setTitle(listDataHeader.get(groupPosition) + " - " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
                 productListViewer.setCategory(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
-                closeList();
                 Intent intent = new Intent(PcBuilder.this, Inside_category.class);
                 startActivity(intent);
                 return false;
             }
         });
-    }
-
-    public void closeList(){
-        for(int i = 0; i < 6; i++)
-        expListView.collapseGroup(i);
     }
 
     public static void prepareListData() {

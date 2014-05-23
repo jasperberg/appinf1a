@@ -35,7 +35,7 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... arg0) {
         // Creating service handler class instance
         ServiceHandler sh = new ServiceHandler();
-
+        productLister.clear();
         // Making a request to url and getting response
         String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
 
@@ -72,7 +72,7 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-    public List<Product> getProductLister(){
+    public static List<Product> getProductLister(){
         return productLister;
     }
 }

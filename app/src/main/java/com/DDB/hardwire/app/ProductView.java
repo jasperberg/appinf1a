@@ -150,7 +150,7 @@ public class ProductView extends Activity implements Serializable {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "hoi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Product is verwijderd", Toast.LENGTH_SHORT).show();
                 removeFromBuild();
             }
         });

@@ -3,7 +3,7 @@
     package="com.DDB">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    
+
     <uses-sdk android:minSdkVersion="11"
         android:targetSdkVersion="19"
         android:maxSdkVersion="19" />
