@@ -47,7 +47,7 @@ public class inside_category extends Activity implements Serializable {
                 int productid = productCategory.get(position).getId();
                 intent.putExtra("Product", productid);
                 intent.putExtra("data", new DataWrapper(productCategory));
-                intent.putExtra("method", "nope");
+                intent.putExtra("method", "None");
                 startActivity(intent);
             }
         });

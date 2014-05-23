@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class my_computer extends Activity {
 
-    private String buildName;
+    String buildName;
     static ArrayList<product> build = new ArrayList<product>();
     ListView myComputerView;
 
