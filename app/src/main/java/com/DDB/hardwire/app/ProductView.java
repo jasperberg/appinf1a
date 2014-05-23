@@ -1,7 +1,6 @@
 package com.DDB.hardwire.app;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,12 +15,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class product_view extends Activity implements Serializable {
-    //product currentProduct = (product) getIntent().getSerializableExtra("Product");
+public class ProductView extends Activity implements Serializable {
+    //Product currentProduct = (Product) getIntent().getSerializableExtra("Product");
     String Name, Description, ListId;
-    int Price, currentProductId;
-    List<product> prodCat;
-    List<product> currProd = new ArrayList<product>();
+    int currentProductId;
+    double Price;
+    List<Product> prodCat;
+    List<Product> currProd = new ArrayList<Product>();
     String methodText;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +70,9 @@ public class product_view extends Activity implements Serializable {
             }
         }
 
-        product currentProduct = new product(ListId, currentProductId, Name, Description, Price);
+        Product currentProduct = new Product(ListId, currentProductId, Name, Description, Price);
 
-        currProd.add(new product(ListId, currentProductId, Name, Description, Price));
+        currProd.add(new Product(ListId, currentProductId, Name, Description, Price));
 
         setTitle(currentProduct.getProductName());
 
@@ -91,34 +91,34 @@ public class product_view extends Activity implements Serializable {
         String addedMotherboard = MainActivity.getAddedMotherboard();
         String addedProcessor = MainActivity.getAddedProcessor();
         if(addedProcessor.equals("Socket AM3+") && !currProd.get(0).getListId().equals("MB Socket AM3+")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedProcessor.equals("Socket FM2+") && !currProd.get(0).getListId().equals("MB Socket FM2+")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedProcessor.equals("Socket 1150") && !currProd.get(0).getListId().equals("MB Socket 1150")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedProcessor.equals("Socket 1155") && !currProd.get(0).getListId().equals("MB Socket 1155")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedProcessor.equals("Socket 2011") && !currProd.get(0).getListId().equals("MB Socket 2011")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedMotherboard.equals("MB Socket AM3+") && !currProd.get(0).getListId().equals("Socket AM3+")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedMotherboard.equals("MB Socket FM2+") && !currProd.get(0).getListId().equals("Socket FM2+")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedMotherboard.equals("MB Socket 1150") && !currProd.get(0).getListId().equals("Socket 1150")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedMotherboard.equals("MB Socket 1155") && !currProd.get(0).getListId().equals("Socket 1155")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(addedMotherboard.equals("MB Socket 2011") && !currProd.get(0).getListId().equals("Socket 2011")){
-            Toast.makeText(getApplicationContext(), "Dit product is niet compatible", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Dit Product is niet compatible", Toast.LENGTH_SHORT).show();
         }
         else if(currProd.get(0).getListId().contains("MB")) {
             if (!addedMotherboard.equals("Empty")) {
@@ -141,7 +141,7 @@ public class product_view extends Activity implements Serializable {
     }
 
     public void removeFromBuild(){
-        my_computer.deleteProduct(currentProductId);
+        MyComputer.deleteProduct(currentProductId);
     }
 
     public void changeButtonSpecs(){

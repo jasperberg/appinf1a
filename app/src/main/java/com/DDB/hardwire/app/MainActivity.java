@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    static ArrayList<product> build = new ArrayList<product>();
+    static ArrayList<Product> build = new ArrayList<Product>();
     private static String buildName = "Click to change name";
     static String addedProcessor = "Empty";
     static String addedMotherboard = "Empty";
@@ -20,28 +20,29 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        new GetItems().execute();
     }
 
     public void sendMessage(View view){
-        Intent intent = new Intent(MainActivity.this, pb_builder.class);
+        Intent intent = new Intent(MainActivity.this, PcBuilder.class);
         startActivity(intent);
     }
 
     public void openMyComputer(View view){
-        Intent intent = new Intent(MainActivity.this, my_computer.class);
+        Intent intent = new Intent(MainActivity.this, MyComputer.class);
         startActivity(intent);
     }
     public void openAbout(View view)
     {
-        Intent intent = new Intent(MainActivity.this, about.class);
+        Intent intent = new Intent(MainActivity.this, About.class);
         startActivity(intent);
     }
 
-    public static void addProduct(product product){
+    public static void addProduct(Product product){
         build.add(product);
     }
 
-    public static ArrayList<product> getBuild(){
+    public static ArrayList<Product> getBuild(){
         return build;
     }
 

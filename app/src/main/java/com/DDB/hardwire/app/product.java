@@ -7,12 +7,13 @@ import java.io.Serializable;
 /**
  * Created by MarK on 09-May-14.
  */
-public class product implements Serializable{
+public class Product implements Serializable{
 
     String productName, productDescription, listId;
-    int productPrice, id;
+    int id;
+    double productPrice;
 
-    public product(String listId, int id, String productName, String productDescription, int productPrice) {
+    public Product(String listId, int id, String productName, String productDescription, double productPrice) {
         this.listId = listId;
         this.id = id;
         this.productName = productName;
@@ -40,7 +41,7 @@ public class product implements Serializable{
         this.productPrice = productPrice;
     }
 
-    public int getProductPrice(){
+    public double getProductPrice(){
         return productPrice;
     }
 

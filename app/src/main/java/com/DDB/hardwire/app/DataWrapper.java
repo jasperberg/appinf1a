@@ -9,13 +9,13 @@ import java.util.List;
 
 public class DataWrapper implements Serializable {
 
-    private List<product> products;
+    private List<Product> products;
 
-    public DataWrapper(List<product> data) {
+    public DataWrapper(List<Product> data) {
         this.products = data;
     }
 
-    public List<product> getProductCategory() {
+    public List<Product> getProductCategory() {
         return products;
     }
 

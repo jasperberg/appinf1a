@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import com.DDB.R;
 
 
-public class about extends Activity {
+public class About extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

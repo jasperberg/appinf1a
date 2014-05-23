@@ -20,10 +20,10 @@ import com.DDB.R;
 
 import java.util.ArrayList;
 
-public class my_computer extends Activity {
+public class MyComputer extends Activity {
 
     String buildName;
-    static ArrayList<product> build = new ArrayList<product>();
+    static ArrayList<Product> build = new ArrayList<Product>();
     ListView myComputerView;
 
     @Override
@@ -39,7 +39,7 @@ public class my_computer extends Activity {
         myComputerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent intent = new Intent(my_computer.this, product_view.class);
+                Intent intent = new Intent(MyComputer.this, ProductView.class);
                 int productid = build.get(position).getId();
                 intent.putExtra("Product", productid);
                 intent.putExtra("data", new DataWrapper(build));
@@ -121,16 +121,16 @@ public class my_computer extends Activity {
     }
 
     public void populateList(){
-        ArrayAdapter<product> adapter = new myComputerAdapter();
+        ArrayAdapter<Product> adapter = new myComputerAdapter();
         myComputerView.setAdapter(adapter);
         TextView title = (TextView) findViewById(R.id.computerName);
         title.setText(MainActivity.getBuildName());
         changeTitle();
     }
 
-    private class myComputerAdapter extends ArrayAdapter<product> {
+    private class myComputerAdapter extends ArrayAdapter<Product> {
         public myComputerAdapter(){
-            super (my_computer.this, R.layout.product, build);
+            super (MyComputer.this, R.layout.product, build);
         }
 
         @Override
@@ -138,7 +138,7 @@ public class my_computer extends Activity {
             if (view == null)
                 view = getLayoutInflater().inflate(R.layout.product, parent, false);
 
-            product prod = build.get(position);
+            Product prod = build.get(position);
 
             TextView name = (TextView) view.findViewById(R.id.productTitle);
             name.setText(prod.getProductName());
@@ -160,7 +160,7 @@ public class my_computer extends Activity {
         alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String value = input.getText().toString();
-                my_computer.this.setBuildName(value);
+                MyComputer.this.setBuildName(value);
                 changeTitle();
             }
         });

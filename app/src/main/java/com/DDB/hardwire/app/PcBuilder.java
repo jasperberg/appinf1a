@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import com.DDB.R;
 
-public class pb_builder extends Activity {
+public class PcBuilder extends Activity {
 
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
@@ -34,11 +33,11 @@ public class pb_builder extends Activity {
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,int childPosition,long id) {
-                inside_category productListViewer = new inside_category();
+                Inside_category productListViewer = new Inside_category();
                 productListViewer.setTitle(listDataHeader.get(groupPosition) + " - " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
                 productListViewer.setCategory(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
                 closeList();
-                Intent intent = new Intent(pb_builder.this, inside_category.class);
+                Intent intent = new Intent(PcBuilder.this, Inside_category.class);
                 startActivity(intent);
                 return false;
             }
