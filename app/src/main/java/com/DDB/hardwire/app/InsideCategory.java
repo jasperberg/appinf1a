@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Inside_category extends Activity implements Serializable {
+public class InsideCategory extends Activity implements Serializable {
 
     private static String _category;
     List<Product> Products = new ArrayList<Product>();
@@ -38,7 +38,7 @@ public class Inside_category extends Activity implements Serializable {
         productListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Intent intent = new Intent(Inside_category.this, ProductView.class);
+                Intent intent = new Intent(InsideCategory.this, ProductView.class);
                 int productid = productCategory.get(position).getId();
                 intent.putExtra("Product", productid);
                 intent.putExtra("data", new DataWrapper(productCategory));
@@ -84,7 +84,7 @@ public class Inside_category extends Activity implements Serializable {
 
     private class ProductListAdapter extends ArrayAdapter<Product>{
         public ProductListAdapter(){
-            super (Inside_category.this, R.layout.product, productCategory);
+            super (InsideCategory.this, R.layout.product, productCategory);
         }
 
         @Override

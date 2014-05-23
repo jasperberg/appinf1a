@@ -43,7 +43,7 @@
         </activity>
 
         <activity
-            android:name=".hardwire.app.Inside_category"
+            android:name=".hardwire.app.InsideCategory"
             android:label="@string/title_activity_inside_category"
             android:parentActivityName=".hardwire.app.PcBuilder">
         </activity>
@@ -51,7 +51,7 @@
         <activity
             android:name=".hardwire.app.ProductView"
             android:label="@string/title_activity_product_view"
-            android:parentActivityName=".hardwire.app.Inside_category">
+            android:parentActivityName=".hardwire.app.InsideCategory">
         </activity>
 
         <activity

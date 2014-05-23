@@ -33,10 +33,10 @@ public class PcBuilder extends Activity {
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition,int childPosition,long id) {
-                Inside_category productListViewer = new Inside_category();
+                InsideCategory productListViewer = new InsideCategory();
                 productListViewer.setTitle(listDataHeader.get(groupPosition) + " - " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
                 productListViewer.setCategory(listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition));
-                Intent intent = new Intent(PcBuilder.this, Inside_category.class);
+                Intent intent = new Intent(PcBuilder.this, InsideCategory.class);
                 startActivity(intent);
                 return false;
             }
