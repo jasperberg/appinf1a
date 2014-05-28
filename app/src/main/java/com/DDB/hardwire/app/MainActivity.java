@@ -7,19 +7,24 @@ import android.view.View;
 import com.DDB.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends Activity {
 
-    static ArrayList<Product> build = new ArrayList<Product>();
+    static List<Product> build = new ArrayList<Product>();
     private static String buildName = "Click to change name";
     static String addedProcessor = "Empty";
     static String addedMotherboard = "Empty";
+    public ProductDataSource datasource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        datasource = new ProductDataSource(this);
+        datasource.open();
+        build = datasource.getAllProducts();
     }
 
     public void sendMessage(View view){
@@ -41,7 +46,7 @@ public class MainActivity extends Activity {
         build.add(product);
     }
 
-    public static ArrayList<Product> getBuild(){
+    public static List<Product> getBuild(){
         return build;
     }
 

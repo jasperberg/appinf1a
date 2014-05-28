@@ -83,7 +83,6 @@ public class InsideCategory extends Activity implements Serializable {
 
         @Override
         public long getItemId(int position){
-            // return the id(), or whatever you use to access the id on your Product object
             return productCategory.get(position).getId();
         }
 

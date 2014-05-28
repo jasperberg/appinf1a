@@ -85,6 +85,8 @@ public class ProductView extends Activity implements Serializable {
     }
 
     public void addProductToBuild(View view){
+        ProductDataSource datasource = new ProductDataSource(getApplicationContext());
+        datasource.open();
         MainActivity.indexAddedProducts();
         String addedMotherboard = MainActivity.getAddedMotherboard();
         String addedProcessor = MainActivity.getAddedProcessor();
@@ -114,6 +116,7 @@ public class ProductView extends Activity implements Serializable {
                     Toast.makeText(getApplicationContext(), "U heeft al een moederbord toegevoegd", Toast.LENGTH_SHORT).show();
                 } else {
                     MainActivity.addProduct(currProd.get(0));
+                    datasource.addProduct(currProd.get(0));
                     Toast.makeText(getApplicationContext(), "Product is toegevoegd aan uw build", Toast.LENGTH_SHORT).show();
                 }
             } else if (!currProd.get(0).getListId().contains("MB")) {
@@ -121,18 +124,23 @@ public class ProductView extends Activity implements Serializable {
                     Toast.makeText(getApplicationContext(), "U heeft al een processor toegevoegd", Toast.LENGTH_SHORT).show();
                 } else {
                     MainActivity.addProduct(currProd.get(0));
+                    datasource.addProduct(currProd.get(0));
                     Toast.makeText(getApplicationContext(), "Product is toegevoegd aan uw build", Toast.LENGTH_SHORT).show();
                 }
             }
         }
         else{
             MainActivity.addProduct(currProd.get(0));
+            datasource.addProduct(currProd.get(0));
             Toast.makeText(getApplicationContext(), "Product is toegevoegd aan uw build", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void removeFromBuild(){
         MyComputer.deleteProduct(currentProductId);
+        ProductDataSource datasource = new ProductDataSource(getApplicationContext());
+        datasource.open();
+        datasource.deleteProduct(currProd.get(0));
     }
 
     public void changeButtonSpecs(){

@@ -19,11 +19,12 @@ import android.widget.Toast;
 import com.DDB.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyComputer extends Activity {
 
     String buildName;
-    static ArrayList<Product> build = new ArrayList<Product>();
+    static List<Product> build = new ArrayList<Product>();
     ListView myComputerView;
 
     @Override
@@ -32,10 +33,8 @@ public class MyComputer extends Activity {
         setTitle("Your saved build");
         setContentView(R.layout.activity_my_computer);
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        build = MainActivity.getBuild();
         myComputerView = (ListView) findViewById(R.id.computerListView);
         populateList();
-
         myComputerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -120,6 +119,7 @@ public class MyComputer extends Activity {
     }
 
     public void populateList(){
+        build = MainActivity.getBuild();
         ArrayAdapter<Product> adapter = new myComputerAdapter();
         myComputerView.setAdapter(adapter);
         TextView title = (TextView) findViewById(R.id.computerName);
