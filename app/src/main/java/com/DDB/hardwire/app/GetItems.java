@@ -60,7 +60,6 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
 
                     Product p = new Product(listId, id, productName, productDescription, productPrice);
                     productLister.add(p);
-                    System.out.println(productLister.get(i).getProductName());
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -75,6 +74,4 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
     public static List<Product> getProductLister(){
         return productLister;
     }
-
-
 }
