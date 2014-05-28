@@ -18,7 +18,7 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     static List<Product> build = new ArrayList<Product>();
-    private static String buildName = "Click to change name";
+    private static String buildName = "Mijn Computer";
     static String addedProcessor = "Empty";
     static String addedMotherboard = "Empty";
     public ProductDataSource datasource;

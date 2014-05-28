@@ -30,7 +30,7 @@ public class MyComputer extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Your saved build");
+        setTitle("Mijn Computer");
         setContentView(R.layout.activity_my_computer);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         myComputerView = (ListView) findViewById(R.id.computerListView);
@@ -62,7 +62,8 @@ public class MyComputer extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.change_name:
+                changeName();
                 return true;
             case R.id.edit_buid:
                 Toast.makeText(getApplicationContext(), "Now editing", Toast.LENGTH_LONG).show();
@@ -90,7 +91,7 @@ public class MyComputer extends Activity {
                 MainActivity.setAddedMotherboard("Empty");
                 MainActivity.setAddedProcessor("Empty");
                 build = MainActivity.getBuild();
-                MainActivity.setBuildName("Click to change name");
+                MainActivity.setBuildName("Mijn Computer");
                 populateList();
                 changeTitle();
                 dialog.dismiss();
@@ -112,8 +113,6 @@ public class MyComputer extends Activity {
 
     public void setBuildName(String Name) {
         buildName = Name;
-        TextView name = (TextView) findViewById(R.id.computerName);
-        name.setText(Name);
         MainActivity.setBuildName(Name);
         changeTitle();
     }
@@ -122,8 +121,6 @@ public class MyComputer extends Activity {
         build = MainActivity.getBuild();
         ArrayAdapter<Product> adapter = new myComputerAdapter();
         myComputerView.setAdapter(adapter);
-        TextView title = (TextView) findViewById(R.id.computerName);
-        title.setText(MainActivity.getBuildName());
         changeTitle();
     }
 
@@ -147,16 +144,16 @@ public class MyComputer extends Activity {
         }
     }
 
-    public void changeName(View view){
+    public void changeName(){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-        alert.setTitle("Rename");
-        alert.setMessage("What do you want to name your build?");
+        alert.setTitle("Hernoemen");
+        alert.setMessage("Hoe moet uw computer heten?");
 
         final EditText input = new EditText(this);
         alert.setView(input);
 
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton("Accepteren", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String value = input.getText().toString();
                 MyComputer.this.setBuildName(value);
@@ -164,7 +161,7 @@ public class MyComputer extends Activity {
             }
         });
 
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton("Annuleer", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 // Canceled.
             }
@@ -174,8 +171,8 @@ public class MyComputer extends Activity {
     }
 
     public void changeTitle(){
-        if(MainActivity.getBuildName()=="Click to change name"){
-            setTitle("Your saved build");
+        if(MainActivity.getBuildName()=="Mijn Computer"){
+            setTitle("Mijn Computer");
         }
         else{
             setTitle(MainActivity.getBuildName());
