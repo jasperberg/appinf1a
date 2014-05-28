@@ -1,9 +1,14 @@
 package com.DDB.hardwire.app;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
+
 import com.DDB.R;
 
 import java.util.ArrayList;
@@ -25,6 +30,31 @@ public class MainActivity extends Activity {
         datasource = new ProductDataSource(this);
         datasource.open();
         build = datasource.getAllProducts();
+        haveNetworkConnection();
+        Context context = getApplicationContext();
+        if (!haveNetworkConnection()){
+            CharSequence text = "Geen internetconnectie, producten kunnen niet geladen worden";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+    }
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
     }
 
     public void sendMessage(View view){

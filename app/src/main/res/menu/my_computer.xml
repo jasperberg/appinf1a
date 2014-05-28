@@ -3,18 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.DDB.hardwire.app.MyComputer" >
     
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+    <item android:id="@+id/change_name"
+        android:title="Verander Computer naam"/>
 
     <item android:id="@+id/delete_build"
-        android:title="Delete build" />
+        android:title="Verwijder Computer" />
 
     <item android:id="@+id/edit_buid"
-        android:title="Edit build" />
+        android:title="Pas Computer aan" />
 
     <item android:id="@+id/share_build"
-        android:title="Share build" />
+        android:title="Deel computer" />
 
 </menu>
