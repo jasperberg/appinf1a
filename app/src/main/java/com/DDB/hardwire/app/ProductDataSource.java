@@ -31,13 +31,15 @@ public class ProductDataSource {
     }
 
     public void addProduct(Product Product) {
-            String sql = "INSERT INTO PRODUCTS (listid, _id, name, description, price) VALUES ('"
-                    + Product.getListId() + "','"
-                    + Product.getId() + "','"
-                    + Product.getProductName() + "','"
-                    + Product.getProductDescription() + "','"
-                    + Product.getProductPrice() + "')";
-            database.execSQL(sql);
+        int lastid = getLastProductId();
+        String sql = "INSERT INTO PRODUCTS (pk, listid, _id, name, description, price) VALUES ('"
+                + lastid + 1 + "','"
+                + Product.getListId() + "','"
+                + Product.getId() + "','"
+                + Product.getProductName() + "','"
+                + Product.getProductDescription() + "','"
+                + Product.getProductPrice() + "')";
+        database.execSQL(sql);
     }
 
     public void changeBuildName(String name) {
@@ -68,13 +70,29 @@ public class ProductDataSource {
         return buildname;
     }
 
-    public void deleteProduct(Product product) {
-        int id = product.getId();
-        int count = MainActivity.checkForProduct(product.getProductName());
-        String counts = count + "";
+    public void deleteProduct(int pkid) {
+        int id = pkid;
         System.out.println("Product deleted with id: " + id);
-        database.delete(MySQLiteHelper.TABLE_PRODUCTS, MySQLiteHelper.COLUMN_ID
-                + " = " + counts, null);
+        database.delete(MySQLiteHelper.TABLE_PRODUCTS, MySQLiteHelper.COLUMN_PK
+                + " = " + id, null);
+    }
+
+    public int getLastProductId(){
+        int lastid;
+        String count = "SELECT count(*) FROM PRODUCTS";
+        Cursor mcursor = database.rawQuery(count, null);
+        mcursor.moveToFirst();
+        int icount = mcursor.getInt(0);
+        if(icount>0) {
+            String query = "SELECT pk FROM PRODUCTS ORDER BY pk DESC LIMIT 1;";
+            Cursor cursor = database.rawQuery(query, null);
+            cursor.moveToFirst();
+            lastid = mcursor.getInt(0);
+        }
+        else{
+            lastid = -1;
+        }
+        return lastid;
     }
 
     public List<Product> getAllProducts() {
@@ -94,12 +112,13 @@ public class ProductDataSource {
     }
 
     private Product cursorToProduct(Cursor cursor) {
-        String listid = cursor.getString(0);
-        int id = cursor.getInt(1);
-        String name = cursor.getString(2);
-        String description = cursor.getString(3);
-        double price = cursor.getDouble(4);
-        Product Product = new Product(listid, id, name, description, price);
+        int pkid = cursor.getInt(0);
+        String listid = cursor.getString(1);
+        int id = cursor.getInt(2);
+        String name = cursor.getString(3);
+        String description = cursor.getString(4);
+        double price = cursor.getDouble(5);
+        Product Product = new Product(pkid, listid, id, name, description, price);
         return Product;
     }
 

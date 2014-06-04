@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.DDB.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,9 @@ public class MyComputer extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Intent intent = new Intent(MyComputer.this, ProductView.class);
                 int productid = build.get(position).getId();
-                intent.putExtra("Product", productid);
+                int pkid = build.get(position).getPkid();
+                int[] array = {productid, pkid};
+                intent.putExtra("Product", array);
                 intent.putExtra("method", "true");
                 startActivity(intent);
             }
@@ -121,7 +124,9 @@ public class MyComputer extends Activity {
     }
 
     public void populateList(){
-        build = MainActivity.getBuild();
+        ProductDataSource datasource = new ProductDataSource(getApplicationContext());
+        datasource.open();
+        build = datasource.getAllProducts();
         ArrayAdapter<Product> adapter = new myComputerAdapter();
         myComputerView.setAdapter(adapter);
         changeTitle();

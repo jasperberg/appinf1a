@@ -40,7 +40,9 @@ public class InsideCategory extends Activity implements Serializable {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Intent intent = new Intent(InsideCategory.this, ProductView.class);
                 int productid = productCategory.get(position).getId();
-                intent.putExtra("Product", productid);
+                int pkid = productCategory.get(position).getPkid();
+                int[] array = {productid, pkid};
+                intent.putExtra("Product", array);
                 intent.putExtra("method", "None");
                 startActivity(intent);
             }

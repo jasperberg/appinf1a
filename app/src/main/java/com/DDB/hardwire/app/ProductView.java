@@ -17,7 +17,9 @@ import java.util.List;
 
 public class ProductView extends Activity implements Serializable {
     String Name, Description, ListId;
-    int currentProductId;
+    int[] currentProductId;
+    int pkid;
+    int pid;
     double Price;
     List<Product> Products;
     List<Product> currProd = new ArrayList<Product>();
@@ -26,7 +28,9 @@ public class ProductView extends Activity implements Serializable {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_view);
-        currentProductId = getIntent().getIntExtra("Product", 0);
+        currentProductId = getIntent().getIntArrayExtra("Product");
+        pkid = currentProductId[1];
+        pid = currentProductId[0];
         methodText = getIntent().getStringExtra("method");
         if(methodText.equals("true")){
             changeButtonSpecs();
@@ -60,7 +64,7 @@ public class ProductView extends Activity implements Serializable {
 
         int size = Products.size();
         for(int i = 0; i < size; i++ ){
-            if(Products.get(i).getId() == currentProductId){
+            if(Products.get(i).getId() == pid){
                 Name = Products.get(i).getProductName();
                 Price = Products.get(i).getProductPrice();
                 Description = Products.get(i).getProductDescription();
@@ -68,9 +72,9 @@ public class ProductView extends Activity implements Serializable {
             }
         }
 
-        Product currentProduct = new Product(ListId, currentProductId, Name, Description, Price);
+        Product currentProduct = new Product(ListId, pid, Name, Description, Price);
 
-        currProd.add(new Product(ListId, currentProductId, Name, Description, Price));
+        currProd.add(new Product(ListId, pid, Name, Description, Price));
 
         setTitle(currentProduct.getProductName());
 
@@ -137,10 +141,10 @@ public class ProductView extends Activity implements Serializable {
     }
 
     public void removeFromBuild(){
-        MyComputer.deleteProduct(currentProductId);
+        MyComputer.deleteProduct(pid);
         ProductDataSource datasource = new ProductDataSource(getApplicationContext());
         datasource.open();
-        datasource.deleteProduct(currProd.get(0));
+        datasource.deleteProduct(pkid);
     }
 
     public void changeButtonSpecs(){

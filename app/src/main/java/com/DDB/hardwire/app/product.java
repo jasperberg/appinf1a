@@ -10,10 +10,19 @@ import java.io.Serializable;
 public class Product implements Serializable{
 
     String productName, productDescription, listId;
-    int id;
+    int pkid, id;
     double productPrice;
 
     public Product(String listId, int id, String productName, String productDescription, double productPrice) {
+        this.listId = listId;
+        this.id = id;
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.productPrice = productPrice;
+    }
+
+    public Product(int pkid, String listId, int id, String productName, String productDescription, double productPrice) {
+        this.pkid = pkid;
         this.listId = listId;
         this.id = id;
         this.productName = productName;
@@ -61,5 +70,11 @@ public class Product implements Serializable{
         return id;
     }
 
+    public int getPkid() {
+        return pkid;
+    }
 
+    public void setPkid(int pkid) {
+        this.pkid = pkid;
+    }
 }
