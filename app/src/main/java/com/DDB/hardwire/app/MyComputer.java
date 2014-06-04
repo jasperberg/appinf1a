@@ -26,11 +26,12 @@ public class MyComputer extends Activity {
     String buildName;
     static List<Product> build = new ArrayList<Product>();
     ListView myComputerView;
+    ProductDataSource datasource = new ProductDataSource(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Mijn Computer");
+        changeTitle();
         setContentView(R.layout.activity_my_computer);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         myComputerView = (ListView) findViewById(R.id.computerListView);
@@ -50,6 +51,7 @@ public class MyComputer extends Activity {
     @Override
     public void onResume(){
         super.onResume();
+        changeTitle();
         populateList();
     }
 
@@ -91,7 +93,6 @@ public class MyComputer extends Activity {
                 MainActivity.setAddedMotherboard("Empty");
                 MainActivity.setAddedProcessor("Empty");
                 build = MainActivity.getBuild();
-                MainActivity.setBuildName("Mijn Computer");
                 populateList();
                 changeTitle();
                 dialog.dismiss();
@@ -113,7 +114,9 @@ public class MyComputer extends Activity {
 
     public void setBuildName(String Name) {
         buildName = Name;
-        MainActivity.setBuildName(Name);
+        datasource.open();
+        datasource.changeBuildName(Name);
+        datasource.close();
         changeTitle();
     }
 
@@ -157,6 +160,9 @@ public class MyComputer extends Activity {
             public void onClick(DialogInterface dialog, int whichButton) {
                 String value = input.getText().toString();
                 MyComputer.this.setBuildName(value);
+                ProductDataSource datasource = new ProductDataSource(getApplicationContext());
+                datasource.open();
+                datasource.changeBuildName(value);
                 changeTitle();
             }
         });
@@ -171,12 +177,10 @@ public class MyComputer extends Activity {
     }
 
     public void changeTitle(){
-        if(MainActivity.getBuildName()=="Mijn Computer"){
-            setTitle("Mijn Computer");
-        }
-        else{
-            setTitle(MainActivity.getBuildName());
-        }
+        datasource.open();
+        buildName = datasource.getBuildName();
+        setTitle(buildName);
+        datasource.close();
     }
 
     public static void deleteProduct(int productId){

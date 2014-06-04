@@ -18,7 +18,6 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     static List<Product> build = new ArrayList<Product>();
-    private static String buildName = "Mijn Computer";
     static String addedProcessor = "Empty";
     static String addedMotherboard = "Empty";
     public ProductDataSource datasource;
@@ -80,16 +79,9 @@ public class MainActivity extends Activity {
         return build;
     }
 
-    public static void setBuildName(String Name){
-        buildName = Name;
-    }
-
-    public static String getBuildName(){
-        return buildName;
-    }
-
     public static void deleteBuild(){
         build.clear();
+        indexAddedProducts();
     }
 
     public static void indexAddedProducts(){

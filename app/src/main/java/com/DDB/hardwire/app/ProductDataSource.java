@@ -39,6 +39,34 @@ public class ProductDataSource {
         database.execSQL(sql);
     }
 
+    public void changeBuildName(String name) {
+        String delsql = "DELETE FROM BUILDNAME";
+        database.execSQL(delsql);
+        String sql = "INSERT INTO BUILDNAME (name) VALUES ('"
+                + name + "')";
+        database.execSQL(sql);
+    }
+
+    public String getBuildName(){
+        String buildname;
+        String count = "SELECT count(*) FROM BUILDNAME";
+        Cursor mcursor = database.rawQuery(count, null);
+        mcursor.moveToFirst();
+        int icount = mcursor.getInt(0);
+        if(icount>0) {
+            Cursor cursor = database.rawQuery("SELECT * FROM BUILDNAME", null);
+            cursor.moveToFirst();
+            String value = cursorToString(cursor);
+            cursor.close();
+            buildname = value;
+        }
+        else{
+            buildname = "Mijn Computer";
+        }
+        mcursor.close();
+        return buildname;
+    }
+
     public void deleteProduct(Product product) {
         long id = product.getId();
         System.out.println("Product deleted with id: " + id);
@@ -70,5 +98,10 @@ public class ProductDataSource {
         int price = cursor.getInt(4);
         Product Product = new Product(listid, id, name, description, price);
         return Product;
+    }
+
+    private String cursorToString(Cursor cursor) {
+        String name = cursor.getString(0);
+        return name;
     }
 }
