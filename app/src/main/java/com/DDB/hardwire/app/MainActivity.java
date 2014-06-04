@@ -75,7 +75,7 @@ public class MainActivity extends Activity {
         build.add(product);
     }
 
-    public static List<Product> getBuild(){
+    public static List<Product> getBuild() {
         return build;
     }
 
@@ -85,6 +85,8 @@ public class MainActivity extends Activity {
     }
 
     public static void indexAddedProducts(){
+        addedProcessor = "Empty";
+        addedMotherboard = "Empty";
         for(int i = 0; i < build.size(); i++){
             if(build.get(i).getListId().equals("Socket AM3+")){
                 addedProcessor = "Socket AM3+";

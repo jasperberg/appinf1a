@@ -10,6 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 public class ProductDataSource {
 
@@ -30,13 +31,13 @@ public class ProductDataSource {
     }
 
     public void addProduct(Product Product) {
-        String sql = "INSERT INTO PRODUCTS (listid, _id, name, description, price) VALUES ('"
-                + Product.getListId() + "','"
-                + Product.getId() + "','"
-                + Product.getProductName() + "','"
-                + Product.getProductDescription() + "','"
-                + Product.getProductPrice() + "')";
-        database.execSQL(sql);
+            String sql = "INSERT INTO PRODUCTS (listid, _id, name, description, price) VALUES ('"
+                    + Product.getListId() + "','"
+                    + Product.getId() + "','"
+                    + Product.getProductName() + "','"
+                    + Product.getProductDescription() + "','"
+                    + Product.getProductPrice() + "')";
+            database.execSQL(sql);
     }
 
     public void changeBuildName(String name) {
@@ -68,10 +69,12 @@ public class ProductDataSource {
     }
 
     public void deleteProduct(Product product) {
-        long id = product.getId();
+        int id = product.getId();
+        int count = MainActivity.checkForProduct(product.getProductName());
+        String counts = count + "";
         System.out.println("Product deleted with id: " + id);
         database.delete(MySQLiteHelper.TABLE_PRODUCTS, MySQLiteHelper.COLUMN_ID
-                + " = " + id, null);
+                + " = " + counts, null);
     }
 
     public List<Product> getAllProducts() {
@@ -95,7 +98,7 @@ public class ProductDataSource {
         int id = cursor.getInt(1);
         String name = cursor.getString(2);
         String description = cursor.getString(3);
-        int price = cursor.getInt(4);
+        double price = cursor.getDouble(4);
         Product Product = new Product(listid, id, name, description, price);
         return Product;
     }

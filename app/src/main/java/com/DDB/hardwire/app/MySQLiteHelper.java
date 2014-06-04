@@ -10,7 +10,7 @@ import android.util.Log;
 
 public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "products.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 1;
     public static final String TABLE_PRODUCTS = "PRODUCTS";
     public static final String COLUMN_LISTID = "listid";
     public static final String COLUMN_ID = "_id";
@@ -23,7 +23,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
             + TABLE_PRODUCTS + "(" + COLUMN_LISTID + " text not null, " + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_NAME
-            + " text not null, " + COLUMN_DESCRIPTION + " text not null, " + COLUMN_PRICE + " integer not null);";
+            + " text not null, " + COLUMN_DESCRIPTION + " text not null, " + COLUMN_PRICE + " double(4,2) not null);";
 
     private static final String DATABASE_NAME_CREATE = "create table "
             + TABLE_BUILDNAME + "(" + COLUMN_BUILDNAME + " text);";
