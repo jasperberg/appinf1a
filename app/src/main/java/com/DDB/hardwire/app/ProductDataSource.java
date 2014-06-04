@@ -32,8 +32,9 @@ public class ProductDataSource {
 
     public void addProduct(Product Product) {
         int lastid = getLastProductId();
+        lastid ++;
         String sql = "INSERT INTO PRODUCTS (pk, listid, _id, name, description, price) VALUES ('"
-                + lastid + 1 + "','"
+                + lastid + "','"
                 + Product.getListId() + "','"
                 + Product.getId() + "','"
                 + Product.getProductName() + "','"
@@ -87,10 +88,10 @@ public class ProductDataSource {
             String query = "SELECT pk FROM PRODUCTS ORDER BY pk DESC LIMIT 1;";
             Cursor cursor = database.rawQuery(query, null);
             cursor.moveToFirst();
-            lastid = mcursor.getInt(0);
+            lastid = cursor.getInt(0);
         }
         else{
-            lastid = -1;
+            lastid = 0;
         }
         return lastid;
     }
