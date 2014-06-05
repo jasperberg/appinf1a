@@ -78,6 +78,13 @@ public class ProductDataSource {
                 + " = " + id, null);
     }
 
+    public void deleteBuild(){
+        String prodSql = "DELETE FROM PRODUCTS";
+        String nameSql = "DELETE FROM BUILDNAME";
+        database.execSQL(prodSql);
+        database.execSQL(nameSql);
+    }
+
     public int getLastProductId(){
         int lastid;
         String count = "SELECT count(*) FROM PRODUCTS";

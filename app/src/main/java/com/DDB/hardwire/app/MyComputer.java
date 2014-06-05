@@ -93,6 +93,9 @@ public class MyComputer extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(getApplicationContext(), "Build deleted", Toast.LENGTH_LONG).show();
                 MainActivity.deleteBuild();
+                datasource.open();
+                datasource.deleteBuild();
+                datasource.close();
                 MainActivity.setAddedMotherboard("Empty");
                 MainActivity.setAddedProcessor("Empty");
                 build = MainActivity.getBuild();
@@ -124,9 +127,9 @@ public class MyComputer extends Activity {
     }
 
     public void populateList(){
-        ProductDataSource datasource = new ProductDataSource(getApplicationContext());
         datasource.open();
         build = datasource.getAllProducts();
+        datasource.close();
         ArrayAdapter<Product> adapter = new myComputerAdapter();
         myComputerView.setAdapter(adapter);
         changeTitle();
