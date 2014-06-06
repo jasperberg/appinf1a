@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.DDB.R;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +82,9 @@ public class ProductView extends Activity implements Serializable {
         TextView name = (TextView) findViewById(R.id.productNameTitle);
         name.setText(currentProduct.getProductName());
         TextView price = (TextView) findViewById(R.id.productPriceView);
-        price.setText("€"+currentProduct.getProductPrice());
+        DecimalFormat df = new DecimalFormat("0.00##");
+        String result = df.format(currentProduct.getProductPrice());
+        price.setText("€"+result);
         TextView productType = (TextView) findViewById(R.id.productTypeId);
         productType.setText(currentProduct.getListId());
         TextView description = (TextView) findViewById(R.id.productDescriptionView);
@@ -142,9 +145,16 @@ public class ProductView extends Activity implements Serializable {
 
     public void removeFromBuild(){
         MyComputer.deleteProduct(pid);
+        MainActivity.deleteProduct(pid);
         ProductDataSource datasource = new ProductDataSource(getApplicationContext());
         datasource.open();
         datasource.deleteProduct(pkid);
+        if(currProd.get(0).getListId().contains("MB")){
+            MainActivity.setAddedMotherboard("Empty");
+        }
+        if(currProd.get(0).getListId().contains("Socket") && !currProd.get(0).getListId().contains("MB")){
+            MainActivity.setAddedProcessor("Empty");
+        }
     }
 
     public void changeButtonSpecs(){

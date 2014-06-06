@@ -84,6 +84,14 @@ public class MainActivity extends Activity {
         indexAddedProducts();
     }
 
+    public static void deleteProduct(int productId){
+        for(int i = 0; i < build.size(); i++){
+            if(build.get(i).getId() == productId){
+                build.remove(i);
+            }
+        }
+    }
+
     public static void indexAddedProducts(){
         addedProcessor = "Empty";
         addedMotherboard = "Empty";

@@ -19,12 +19,14 @@ import android.widget.Toast;
 import com.DDB.R;
 
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyComputer extends Activity {
 
     String buildName;
+    double price = 0;
     static List<Product> build = new ArrayList<Product>();
     ListView myComputerView;
     ProductDataSource datasource = new ProductDataSource(this);
@@ -130,6 +132,7 @@ public class MyComputer extends Activity {
         datasource.open();
         build = datasource.getAllProducts();
         datasource.close();
+        setPrice();
         ArrayAdapter<Product> adapter = new myComputerAdapter();
         myComputerView.setAdapter(adapter);
         changeTitle();
@@ -150,7 +153,9 @@ public class MyComputer extends Activity {
             TextView name = (TextView) view.findViewById(R.id.productTitle);
             name.setText(prod.getProductName());
             TextView price = (TextView) view.findViewById(R.id.productPrice);
-            price.setText("€"+prod.getProductPrice());
+            DecimalFormat df = new DecimalFormat("0.00##");
+            String result = df.format(prod.getProductPrice());
+            price.setText("€"+result);
             return view;
         }
     }
@@ -189,6 +194,18 @@ public class MyComputer extends Activity {
         buildName = datasource.getBuildName();
         setTitle(buildName);
         datasource.close();
+    }
+
+    public void setPrice(){
+        double locprice = 0;
+        for(int i = 0; i < build.size(); i++){
+            locprice = locprice + build.get(i).getProductPrice();
+        }
+        price = locprice;
+        TextView tv = (TextView) findViewById(R.id.buildPrice);
+        DecimalFormat df = new DecimalFormat("0.00##");
+        String result = df.format(price);
+        tv.setText("Totaal prijs: €"+result);
     }
 
     public static void deleteProduct(int productId){

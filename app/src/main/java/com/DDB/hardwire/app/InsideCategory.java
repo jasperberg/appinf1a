@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.DDB.R;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,7 +99,9 @@ public class InsideCategory extends Activity implements Serializable {
             TextView name = (TextView) view.findViewById(R.id.productTitle);
             name.setText(prod.getProductName());
             TextView price = (TextView) view.findViewById(R.id.productPrice);
-            price.setText("€"+prod.getProductPrice());
+            DecimalFormat df = new DecimalFormat("0.00##");
+            String result = df.format(prod.getProductPrice());
+            price.setText("€"+result);
 
             return view;
         }
