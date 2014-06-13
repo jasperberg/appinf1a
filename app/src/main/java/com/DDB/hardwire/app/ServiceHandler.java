@@ -3,8 +3,15 @@ package com.DDB.hardwire.app;
 /**
  * Created by Jasper on 22-May-14.
  */
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -45,15 +52,12 @@ public class ServiceHandler {
     public String makeServiceCall(String url, int method,
                                   List<NameValuePair> params) {
         try {
-            // http client
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpEntity httpEntity = null;
             HttpResponse httpResponse = null;
 
-            // Checking http request method type
             if (method == POST) {
                 HttpPost httpPost = new HttpPost(url);
-                // adding post params
                 if (params != null) {
                     httpPost.setEntity(new UrlEncodedFormEntity(params));
                 }
@@ -61,7 +65,6 @@ public class ServiceHandler {
                 httpResponse = httpClient.execute(httpPost);
 
             } else if (method == GET) {
-                // appending params to url
                 if (params != null) {
                     String paramString = URLEncodedUtils
                             .format(params, "utf-8");

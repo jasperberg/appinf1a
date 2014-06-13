@@ -2,17 +2,25 @@ package com.DDB.hardwire.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.DDB.R;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -102,7 +110,8 @@ public class InsideCategory extends Activity implements Serializable {
             DecimalFormat df = new DecimalFormat("0.00##");
             String result = df.format(prod.getProductPrice());
             price.setText("€"+result);
-
+            ImageView picture = (ImageView) view.findViewById(R.id.productImage);
+            picture.setImageBitmap(prod.getPicture());
             return view;
         }
     }

@@ -1,65 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.DDB">
+    package="com.DDB" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <uses-sdk android:minSdkVersion="11"
-        android:targetSdkVersion="19"
-        android:maxSdkVersion="19" />
+    <uses-sdk
+        android:maxSdkVersion="19"
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Holo"
-        >
-
+        android:theme="@style/Holo" >
         <activity
-            android:name=".hardwire.app.SplashScreen"
+            android:name="com.DDB.hardwire.app.SplashScreen"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.DDB.hardwire.app.MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
         </activity>
-
         <activity
-            android:name=".hardwire.app.PcBuilder"
+            android:name="com.DDB.hardwire.app.PcBuilder"
             android:label="@string/title_activity_pb_builder"
-            android:parentActivityName="com.DDB.hardwire.app.MainActivity">
+            android:parentActivityName="com.DDB.hardwire.app.MainActivity" >
         </activity>
-
         <activity
-            android:name=".hardwire.app.MyComputer"
+            android:name="com.DDB.hardwire.app.MyComputer"
             android:label="@string/title_activity_my_computer"
-            android:parentActivityName="com.DDB.hardwire.app.MainActivity">
+            android:parentActivityName="com.DDB.hardwire.app.MainActivity" >
         </activity>
-
         <activity
-            android:name=".hardwire.app.InsideCategory"
+            android:name="com.DDB.hardwire.app.InsideCategory"
             android:label="@string/title_activity_inside_category"
-            android:parentActivityName=".hardwire.app.PcBuilder">
+            android:parentActivityName="com.DDB.hardwire.app.PcBuilder" >
         </activity>
-
         <activity
-            android:name=".hardwire.app.ProductView"
+            android:name="com.DDB.hardwire.app.ProductView"
             android:label="@string/title_activity_product_view"
-            android:parentActivityName=".hardwire.app.InsideCategory">
+            android:parentActivityName="com.DDB.hardwire.app.InsideCategory" >
         </activity>
-
         <activity
-            android:name=".hardwire.app.About"
+            android:name="com.DDB.hardwire.app.About"
             android:label="@string/title_activity_about"
-            android:parentActivityName="com.DDB.hardwire.app.MainActivity">
+            android:parentActivityName="com.DDB.hardwire.app.MainActivity" >
         </activity>
-
+        <activity
+            android:name="com.DDB.hardwire.app.Guides"
+            android:label="@string/title_activity_guides" >
+        </activity>
+        <activity
+            android:name="com.DDB.hardwire.app.GuideChooser"
+            android:label="@string/title_activity_guide_chooser" >
+        </activity>
+        <activity
+            android:name=".hardwire.app.SettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
     </application>
+
 </manifest>

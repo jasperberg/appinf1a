@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pcType">
+        <item name="Game">Gaming computer</item>
+        <item name="Editing">Video editing computer</item>
+        <item name="Internet">Internet computer</item>
+        <item name="Werk">Werk computer</item>
+        <item name="Geen">Geen voorkeur</item>
+    </string-array>
+    <string-array name="pcTypeValues">
+        <item name="Game">Game</item>
+        <item name="Editing">Editing</item>
+        <item name="Internet">Internet</item>
+        <item name="Werk">Werk</item>
+        <item name="Geen">Geen</item>
+    </string-array>
+</resources>

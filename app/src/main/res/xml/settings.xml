@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Computer Instellingen" >
+        <ListPreference
+            android:key="prefPcType"
+            android:entries="@array/pcType"
+            android:summary="Het soort computer dat u wilt bouwen"
+            android:entryValues="@array/pcTypeValues"
+            android:title="Computer type" />
+    </PreferenceCategory>
+</PreferenceScreen>

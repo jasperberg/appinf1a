@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +32,7 @@ public class MyComputer extends Activity {
     double price = 0;
     static List<Product> build = new ArrayList<Product>();
     ListView myComputerView;
+    TextView pcTypeView;
     ProductDataSource datasource = new ProductDataSource(this);
 
     @Override
@@ -38,6 +42,9 @@ public class MyComputer extends Activity {
         setContentView(R.layout.activity_my_computer);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         myComputerView = (ListView) findViewById(R.id.computerListView);
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        pcTypeView = (TextView) findViewById(R.id.pcType);
+        pcTypeView.setText(sharedPrefs.getString("prefPcType", ""));
         populateList();
         myComputerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -147,15 +154,24 @@ public class MyComputer extends Activity {
         public View getView(int position, View view, ViewGroup parent) {
             if (view == null)
                 view = getLayoutInflater().inflate(R.layout.product, parent, false);
-
+            List<Product> Products;
+            Products = GetItems.getProductLister();
             Product prod = build.get(position);
+            Product thisProduct = new Product(null, 0, null, null, 0.0, null);
+            for(int i = 0; i < Products.size(); i++){
+                if(Products.get(i).getId() == prod.getId()){
+                    thisProduct = Products.get(i);
+                }
+            }
 
             TextView name = (TextView) view.findViewById(R.id.productTitle);
-            name.setText(prod.getProductName());
+            name.setText(thisProduct.getProductName());
             TextView price = (TextView) view.findViewById(R.id.productPrice);
             DecimalFormat df = new DecimalFormat("0.00##");
-            String result = df.format(prod.getProductPrice());
+            String result = df.format(thisProduct.getProductPrice());
             price.setText("€"+result);
+            ImageView picture = (ImageView) view.findViewById(R.id.productImage);
+            picture.setImageBitmap(thisProduct.getPicture());
             return view;
         }
     }

@@ -11,5 +11,7 @@
     <string name="title_activity_splash_screen">splashScreen</string>
     <string name="title_activity_product_view">product_view</string>
     <string name="title_activity_about">about</string>
+    <string name="title_activity_guides">Guides</string>
+    <string name="title_activity_guide_chooser">GuideChooser</string>
 
 </resources>

@@ -52,7 +52,8 @@
         android:background="#FF3333"
         android:layout_weight="0.03"
         android:clickable="true"
-        android:gravity="center" />
+        android:gravity="center"
+        android:onClick="openGuides" />
     <TextView
         android:layout_width="331dp"
         android:layout_height="wrap_content"

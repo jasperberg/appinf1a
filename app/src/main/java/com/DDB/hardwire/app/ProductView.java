@@ -1,11 +1,13 @@
 package com.DDB.hardwire.app;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ public class ProductView extends Activity implements Serializable {
     int pkid;
     int pid;
     double Price;
+    Bitmap Pic;
     List<Product> Products;
     List<Product> currProd = new ArrayList<Product>();
     String methodText;
@@ -36,33 +39,13 @@ public class ProductView extends Activity implements Serializable {
         if(methodText.equals("true")){
             changeButtonSpecs();
         }
-        Products = GetItems.getProductLister();
+        GetItems gi = new GetItems();
+        Products = gi.getProductLister();
         populate();
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.product_view, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     private void populate(){
-
         int size = Products.size();
         for(int i = 0; i < size; i++ ){
             if(Products.get(i).getId() == pid){
@@ -70,12 +53,13 @@ public class ProductView extends Activity implements Serializable {
                 Price = Products.get(i).getProductPrice();
                 Description = Products.get(i).getProductDescription();
                 ListId = Products.get(i).getListId();
+                Pic = Products.get(i).getPicture();
             }
         }
 
-        Product currentProduct = new Product(ListId, pid, Name, Description, Price);
+        Product currentProduct = new Product(ListId, pid, Name, Description, Price, Pic);
 
-        currProd.add(new Product(ListId, pid, Name, Description, Price));
+        currProd.add(new Product(ListId, pid, Name, Description, Price, Pic));
 
         setTitle(currentProduct.getProductName());
 
@@ -89,6 +73,8 @@ public class ProductView extends Activity implements Serializable {
         productType.setText(currentProduct.getListId());
         TextView description = (TextView) findViewById(R.id.productDescriptionView);
         description.setText(currentProduct.getProductDescription());
+        ImageView picture = (ImageView) findViewById(R.id.productImageView);
+        picture.setImageBitmap(currentProduct.getPicture());
     }
 
     public void addProductToBuild(View view){

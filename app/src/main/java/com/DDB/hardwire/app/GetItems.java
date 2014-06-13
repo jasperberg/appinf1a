@@ -1,6 +1,8 @@
 package com.DDB.hardwire.app;
 
 import android.app.ProgressDialog;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -8,6 +10,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +35,8 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
     private static final String TAG_PRODUCTDESCRIPTION = "productDescription";
     private static final String TAG_PRODUCTPRICE = "productPrice";
     private static final String TAG_LISTID = "listid";
+    private static final String TAG_PICTURE = "pictureUrl";
+
 
     JSONArray products = null;
     @Override
@@ -57,8 +65,9 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
                     String listId = c.getString(TAG_LISTID);
                     String productDescription = c.getString(TAG_PRODUCTDESCRIPTION);
                     double productPrice = c.getDouble(TAG_PRODUCTPRICE);
-
-                    Product p = new Product(listId, id, productName, productDescription, productPrice);
+                    String pictureUrl = c.getString(TAG_PICTURE);
+                    Bitmap picture = getBitmapFromURL(pictureUrl);
+                    Product p = new Product(listId, id, productName, productDescription, productPrice, picture);
                     productLister.add(p);
                 }
             } catch (JSONException e) {
@@ -73,5 +82,24 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
 
     public static List<Product> getProductLister(){
         return productLister;
+    }
+
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            Log.e("src", src);
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            Log.e("Bitmap","returned");
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Exception",e.getMessage());
+            return null;
+        }
     }
 }
