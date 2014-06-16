@@ -2,10 +2,15 @@ package com.DDB.hardwire.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -58,6 +63,28 @@ public class InsideCategory extends Activity implements Serializable {
         });
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        populateList();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public List<Product> getProductCategory(){
         return productCategory;
     }
@@ -78,6 +105,7 @@ public class InsideCategory extends Activity implements Serializable {
     }
 
     private void populateList(){
+
         ArrayAdapter<Product> adapter = new ProductListAdapter();
         productListView.setAdapter(adapter);
     }
@@ -112,6 +140,12 @@ public class InsideCategory extends Activity implements Serializable {
             price.setText("€"+result);
             ImageView picture = (ImageView) view.findViewById(R.id.productImage);
             picture.setImageBitmap(prod.getPicture());
+
+            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String type = sharedPrefs.getString("prefPcType", "");
+            if(type.equals(prod.getBuildType())){
+                view.setBackgroundColor(Color.parseColor("#FF3333"));
+            }
             return view;
         }
     }

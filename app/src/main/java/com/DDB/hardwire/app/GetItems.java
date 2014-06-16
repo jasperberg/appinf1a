@@ -67,7 +67,8 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
                     double productPrice = c.getDouble(TAG_PRODUCTPRICE);
                     String pictureUrl = c.getString(TAG_PICTURE);
                     Bitmap picture = getBitmapFromURL(pictureUrl);
-                    Product p = new Product(listId, id, productName, productDescription, productPrice, picture);
+                    String buildType = "Game";
+                    Product p = new Product(listId, id, productName, productDescription, productPrice, picture, buildType);
                     productLister.add(p);
                 }
             } catch (JSONException e) {

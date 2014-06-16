@@ -42,9 +42,7 @@ public class MyComputer extends Activity {
         setContentView(R.layout.activity_my_computer);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         myComputerView = (ListView) findViewById(R.id.computerListView);
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         pcTypeView = (TextView) findViewById(R.id.pcType);
-        pcTypeView.setText(sharedPrefs.getString("prefPcType", ""));
         populateList();
         myComputerView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -87,6 +85,9 @@ public class MyComputer extends Activity {
                 return true;
             case R.id.share_build:
                 return true;
+            case R.id.settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -136,6 +137,7 @@ public class MyComputer extends Activity {
     }
 
     public void populateList(){
+        setBuildType();
         datasource.open();
         build = datasource.getAllProducts();
         datasource.close();
@@ -229,6 +231,26 @@ public class MyComputer extends Activity {
             if(build.get(i).getId() == productId){
                 build.remove(i);
             }
+        }
+    }
+
+    public void setBuildType(){
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String type = sharedPrefs.getString("prefPcType", "");
+        if(type.equals("Game")){
+            pcTypeView.setText("Gaming");
+        }
+        else if(type.equals("Editing")){
+            pcTypeView.setText("Video editing");
+        }
+        else if(type.equals("Internet")){
+            pcTypeView.setText("Internet");
+        }
+        else if(type.equals("Work")){
+            pcTypeView.setText("Work");
+        }
+        else{
+            pcTypeView.setText("");
         }
     }
 }

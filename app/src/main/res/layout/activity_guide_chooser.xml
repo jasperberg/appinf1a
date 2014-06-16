@@ -44,15 +44,4 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Pc voorkeur instellen"
-        android:background="#FF3333"
-        android:onClick="pcTypeDialog"
-        android:clickable="true"
-        android:layout_weight="0.04"
-        android:gravity="center" />
-
 </LinearLayout>

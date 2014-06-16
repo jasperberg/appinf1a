@@ -26,47 +26,9 @@ public class GuideChooser extends Activity {
         startActivity(intent);
     }
 
-    public void componentGuide(View view){
+    public void componentGuide(View view) {
         Intent intent = new Intent(this, Guides.class);
         intent.putExtra("id", 1);
         startActivity(intent);
-    }
-
-    public void pcTypeDialog(View view){
-        final CharSequence[] choices = { "Gaming Pc", "Editing Pc", "Internet Pc", "Werk Pc", "Geen voorkeur"};
-        SharedPreferences settings = getSharedPreferences("pcType", MODE_PRIVATE);
-        final SharedPreferences.Editor editor = settings.edit();
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-
-        alert.setTitle("Selecteer Pc type");
-
-        alert.setItems(choices, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch(which){
-                    case 0:
-                        editor.putString("pcType", "Game");
-                        break;
-                    case 1:
-                        editor.putString("pcType", "Editing");
-                        break;
-                    case 2:
-                        editor.putString("pcType", "Internet");
-                        break;
-                    case 3:
-                        editor.putString("pcType", "Werk");
-                        break;
-                    case 4:
-                        editor.putString("pcType", "Geen");
-                }
-            }
-
-        });
-
-        //zet nog niet de pref!!!!!!
-
-        editor.commit();
-        alert.create().show();
     }
 }

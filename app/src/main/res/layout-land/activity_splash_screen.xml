@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="#FF3333"
+    tools:context="com.DDB.hardwire.app.SplashScreen">
+
+    <ImageView
+        android:id="@drawable/ic_launcher"
+        android:layout_width="450px"
+        android:layout_height="450px"
+        android:src="@drawable/splash"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="31dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#454545"
+        android:gravity="center_horizontal"
+        android:text="HardWired"
+        android:id="@+id/textView2"
+        android:layout_alignBottom="@drawable/ic_launcher"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="28dp"
+        android:layout_alignRight="@drawable/ic_launcher"
+        android:layout_alignEnd="@drawable/ic_launcher" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#454545"
+        android:gravity="center_horizontal"
+        android:text="Powered by"
+        android:id="@+id/textView"
+        android:layout_above="@drawable/databaas"
+        android:layout_alignLeft="@drawable/databaas"
+        android:layout_alignStart="@drawable/databaas"
+        android:layout_alignRight="@drawable/databaas"
+        android:layout_alignEnd="@drawable/databaas" />
+
+    <ImageView
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:id="@drawable/databaas"
+        android:src="@drawable/databaas"
+        android:layout_marginLeft="96dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@drawable/ic_launcher" />
+
+</RelativeLayout>

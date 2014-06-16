@@ -10,4 +10,9 @@
             android:entryValues="@array/pcTypeValues"
             android:title="Computer type" />
     </PreferenceCategory>
+    <Preference
+        android:key="pref_static_field_key"
+        android:selectable="false"
+        android:title="Uitleg:"
+        android:summary="Producten van uw gekozen computer type zullen rood worden gehighlight."/>
 </PreferenceScreen>

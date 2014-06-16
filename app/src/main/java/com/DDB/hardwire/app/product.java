@@ -10,18 +10,10 @@ import java.net.URL;
  */
 public class Product implements Serializable{
 
-    String productName, productDescription, listId;
+    String productName, productDescription, listId, buildType;
     int pkid, id;
     Bitmap picture;
     double productPrice;
-
-    public Product(String listId, int id, String productName, String productDescription, double productPrice) {
-        this.listId = listId;
-        this.id = id;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.productPrice = productPrice;
-    }
 
     public Product(String listId, int id, String productName, String productDescription, double productPrice, Bitmap picture) {
         this.listId = listId;
@@ -30,6 +22,16 @@ public class Product implements Serializable{
         this.productDescription = productDescription;
         this.productPrice = productPrice;
         this.picture = picture;
+    }
+
+    public Product(String listId, int id, String productName, String productDescription, double productPrice, Bitmap picture, String buildType) {
+        this.listId = listId;
+        this.id = id;
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.productPrice = productPrice;
+        this.picture = picture;
+        this.buildType = buildType;
     }
 
     public Product(int pkid, String listId, int id, String productName, String productDescription, double productPrice) {
@@ -95,5 +97,13 @@ public class Product implements Serializable{
 
     public void setPicture(Bitmap picture) {
         this.picture = picture;
+    }
+
+    public String getBuildType() {
+        return buildType;
+    }
+
+    public void setBuildType(String buildType) {
+        this.buildType = buildType;
     }
 }
