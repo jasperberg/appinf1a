@@ -25,7 +25,8 @@
             android:id="@+id/productTitle"
             android:layout_gravity="center_horizontal|top"
             android:gravity="center_vertical"
-            android:textSize="20dp"/>
+            android:textSize="17dp"
+            android:textIsSelectable="false" />
 
         <TextView
             android:layout_width="wrap_content"

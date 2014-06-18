@@ -36,11 +36,13 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
     private static final String TAG_PRODUCTPRICE = "productPrice";
     private static final String TAG_LISTID = "listid";
     private static final String TAG_PICTURE = "pictureUrl";
+    private static final String TAG_BUILDTYPE = "buildType";
 
 
     JSONArray products = null;
     @Override
     protected Void doInBackground(Void... arg0) {
+        long start = System.nanoTime();
         // Creating service handler class instance
         ServiceHandler sh = new ServiceHandler();
         productLister.clear();
@@ -67,7 +69,7 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
                     double productPrice = c.getDouble(TAG_PRODUCTPRICE);
                     String pictureUrl = c.getString(TAG_PICTURE);
                     Bitmap picture = getBitmapFromURL(pictureUrl);
-                    String buildType = "Game";
+                    String buildType = c.getString(TAG_BUILDTYPE);
                     Product p = new Product(listId, id, productName, productDescription, productPrice, picture, buildType);
                     productLister.add(p);
                 }
@@ -77,7 +79,8 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
         } else {
             Log.e("ServiceHandler", "Couldn't get any data from the url");
         }
-
+        long elapsedTime = System.nanoTime() - start;
+        System.out.println("Parsing took " + elapsedTime/1000000000 + " seconds.");
         return null;
     }
 
@@ -95,7 +98,7 @@ public class GetItems extends AsyncTask<Void, Void, Void> {
             connection.connect();
             InputStream input = connection.getInputStream();
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            Log.e("Bitmap","returned");
+            Log.e("Bitmap","found and returned");
             return myBitmap;
         } catch (IOException e) {
             e.printStackTrace();

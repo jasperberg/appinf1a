@@ -70,6 +70,7 @@ public class PcBuilder extends Activity {
         listDataHeader.add("Videokaart");
         listDataHeader.add("Geheugen");
         listDataHeader.add("Opslag");
+        listDataHeader.add("Voeding");
         listDataHeader.add("Behuizing");
 
         List<String> Processor = new ArrayList<String>();
@@ -98,9 +99,12 @@ public class PcBuilder extends Activity {
         Opslag.add("HDD");
         Opslag.add("SSD");
 
+        List<String> Voeding = new ArrayList<String>();
+        Voeding.add("< 500 Watt");
+        Voeding.add("> 500 Watt");
+
         List<String> Behuizing = new ArrayList<String>();
         Behuizing.add("ATX");
-        Behuizing.add("M-ATX");
         Behuizing.add("u-ATX");
 
         listDataChild.put(listDataHeader.get(0), Processor); // Header, Child data
@@ -108,7 +112,8 @@ public class PcBuilder extends Activity {
         listDataChild.put(listDataHeader.get(2), Videokaart);
         listDataChild.put(listDataHeader.get(3), Geheugen);
         listDataChild.put(listDataHeader.get(4), Opslag);
-        listDataChild.put(listDataHeader.get(5), Behuizing);
+        listDataChild.put(listDataHeader.get(5), Voeding);
+        listDataChild.put(listDataHeader.get(6), Behuizing);
     }
 }
 

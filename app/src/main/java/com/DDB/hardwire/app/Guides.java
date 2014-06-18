@@ -17,7 +17,7 @@ public class Guides extends FragmentActivity implements
     private PagerAdapter mAdapter;
     private ActionBar actionBar;
     public static String[] tabs = { "Page 0", "Page 1", "Page 3" };
-    public static String[] texts = { "OMG", "BLAH", "HoLY SHIT"};
+    public static String[] texts = { "Welcome", "Content", "Byebye"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
