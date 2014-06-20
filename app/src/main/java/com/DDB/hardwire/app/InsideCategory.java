@@ -126,7 +126,8 @@ public class InsideCategory extends Activity implements Serializable {
         }
 
         @Override
-        public View getView(int position, View view, ViewGroup parent) {
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View view = convertView;
             if (view == null)
                 view = getLayoutInflater().inflate(R.layout.product, parent, false);
 
@@ -143,7 +144,10 @@ public class InsideCategory extends Activity implements Serializable {
 
             SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             String type = sharedPrefs.getString("prefPcType", "");
-            if(type.equals(prod.getBuildType())){
+            if(!type.equals(prod.getBuildType())){
+                view.setBackgroundColor(Color.BLACK);
+            }
+            else{
                 view.setBackgroundColor(Color.parseColor("#FF3333"));
             }
             return view;
