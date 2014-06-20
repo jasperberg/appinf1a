@@ -16,8 +16,12 @@ public class Guides extends FragmentActivity implements
     private ViewPager viewPager;
     private PagerAdapter mAdapter;
     private ActionBar actionBar;
-    public static String[] tabs = { "Page 0", "Page 1", "Page 3" };
-    public static String[] texts = { "Welcome", "Content", "Byebye"};
+    public static String[] tabs = {"Welkom", "Componenten selecteren", "Klaar met de componenten", "Beginnen met bouwen" };
+    public static String[] texts = {"Welkom, in deze guide vertellen wij hoe je je eigen computer in elkaar kunt zetten. Je kunt deze guide er gewoon bij houden tijdens het bouwen van jouw computer.\n \nWij wensen u namens de Databazen en HardWire heel veel plezier bij het bouwen van jouw computer!",
+                                    "Bij het maken van jouw eigen computer is het belangrijk dat je de juiste componenten selecteerd. In onze app zijn er verschillende onderdeel categorieen beschikbaar, deze kun je selecteren in het menu rechts bovenin tijdens de componenten selecteren. Wanneer je een categorie geselecteerd hebt, zal het onderdeel dat hier het meeste bij hoort automatisch rood worden.",
+                                    "Als je klaar bent met selecteren van de componenten en je weet zeker dat alle benodigde onderdelen aanwezig zijn (minimaal een per categorie) en je hebt je computer besteld via de goedkoopste website, kun je aan de slag gaan met het in elkaar zetten van jouw computer",
+                                    "Laten we beginnen!"
+                                    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +49,8 @@ public class Guides extends FragmentActivity implements
         }
 
         if(id == 1) {
-            viewPager.setCurrentItem(2);
-            actionBar.setSelectedNavigationItem(2);
+            viewPager.setCurrentItem(3);
+            actionBar.setSelectedNavigationItem(3);
         }
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

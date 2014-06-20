@@ -60,7 +60,8 @@
         </activity>
         <activity
             android:name="com.DDB.hardwire.app.GuideChooser"
-            android:label="@string/title_activity_guide_chooser" >
+            android:label="@string/title_activity_guide_chooser"
+            android:parentActivityName="com.DDB.hardwire.app.MainActivity">
         </activity>
         <activity
             android:name=".hardwire.app.SettingsActivity"

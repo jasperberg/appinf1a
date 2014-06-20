@@ -18,17 +18,18 @@ public class GuideChooser extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guide_chooser);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     public void openBuyGuide(View view){
         Intent intent = new Intent(this, Guides.class);
-        intent.putExtra("id", 0);
+        intent.putExtra("id", 1);
         startActivity(intent);
     }
 
     public void componentGuide(View view) {
         Intent intent = new Intent(this, Guides.class);
-        intent.putExtra("id", 1);
+        intent.putExtra("id", 0);
         startActivity(intent);
     }
 }

@@ -15,11 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="33dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Bouw guide"
-        android:layout_weight="0.04"
+        android:text="Componenten selectie guide"
         android:background="#FF3333"
+        android:onClick="componentGuide"
         android:clickable="true"
-        android:onClick="openBuyGuide"
+        android:layout_weight="0.04"
         android:gravity="center" />
 
     <TextView
@@ -32,12 +32,13 @@
         android:layout_width="match_parent"
         android:layout_height="33dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Componenten selectie guide"
-        android:background="#FF3333"
-        android:onClick="componentGuide"
-        android:clickable="true"
+        android:text="Bouw guide"
         android:layout_weight="0.04"
+        android:background="#FF3333"
+        android:clickable="true"
+        android:onClick="openBuyGuide"
         android:gravity="center" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -10,5 +10,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text=""
         android:id="@+id/page"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textSize="19dp"
+        android:gravity="fill_horizontal" />
 </LinearLayout>
