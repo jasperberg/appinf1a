@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -150,6 +151,11 @@ public class MainActivity extends Activity {
                 addedMotherboard = "MB Socket 2011";
             }
         }
+    }
+
+    public void openAd(View view){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.alternate.nl/html/product/information/page.html?articleId=1116135&channel_code=763&product_code=89988869&utm_source=publitas"));
+        startActivity(browserIntent);
     }
 
     public static String getAddedProcessor(){

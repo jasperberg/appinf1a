@@ -1,6 +1,5 @@
 package com.DDB.hardwire.app;
 
-import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +20,6 @@ import java.util.List;
  * Created by Jasper on 23-May-14.
  */
 public class GetItems extends AsyncTask<Void, Void, Void> {
-    private ProgressDialog pDialog;
     static List<Product> productLister = new ArrayList<Product>();
 
     // URL to get contacts JSON

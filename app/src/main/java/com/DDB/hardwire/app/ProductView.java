@@ -17,7 +17,9 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Created by MarK on 29-May-14.
+ */
 public class ProductView extends Activity implements Serializable {
     String Name, Description, ListId;
     int[] currentProductId;
@@ -155,7 +157,3 @@ public class ProductView extends Activity implements Serializable {
         });
     }
 }
-
-
-
-

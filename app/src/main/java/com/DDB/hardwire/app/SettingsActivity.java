@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
 import com.DDB.R;
-
+/**
+ * Created by MarK on 20-Jun-14.
+ */
 public class SettingsActivity extends PreferenceActivity{
 
     @Override

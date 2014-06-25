@@ -7,8 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.DDB.R;
-
-
+/**
+ * Created by Jasper.
+ */
 public class About extends Activity {
 
     @Override

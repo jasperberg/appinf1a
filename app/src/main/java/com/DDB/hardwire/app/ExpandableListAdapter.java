@@ -11,7 +11,9 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.DDB.R;
-
+/**
+ * Created by MarK.
+ */
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context _context;

@@ -3,12 +3,9 @@ package com.DDB.hardwire.app;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,16 +18,13 @@ import android.widget.TextView;
 
 import com.DDB.R;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
-
+/**
+ * Created by MarK on 29-May-14.
+ */
 public class InsideCategory extends Activity implements Serializable {
 
     private static String _category;

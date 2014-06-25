@@ -25,7 +25,9 @@ import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Created by MarK on 29-May-14.
+ */
 public class MyComputer extends Activity {
 
     String buildName;

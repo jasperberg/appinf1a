@@ -9,24 +9,24 @@ import android.app.ActionBar;
 import com.DDB.R;
 import android.app.ActionBar.Tab;
 
-
+import java.util.ArrayList;
+import java.util.List;
+/**
+ * Created by MarK on 25-Jun-14.
+ */
 public class Guides extends FragmentActivity implements
         ActionBar.TabListener {
 
     private ViewPager viewPager;
     private PagerAdapter mAdapter;
     private ActionBar actionBar;
-    public static String[] tabs = {"Welkom", "Componenten selecteren", "Klaar met de componenten", "Beginnen met bouwen" };
-    public static String[] texts = {"Welkom, in deze guide vertellen wij hoe je je eigen computer in elkaar kunt zetten. Je kunt deze guide er gewoon bij houden tijdens het bouwen van jouw computer.\n \nWij wensen u namens de Databazen en HardWire heel veel plezier bij het bouwen van jouw computer!",
-                                    "Bij het maken van jouw eigen computer is het belangrijk dat je de juiste componenten selecteerd. In onze app zijn er verschillende onderdeel categorieen beschikbaar, deze kun je selecteren in het menu rechts bovenin tijdens de componenten selecteren. Wanneer je een categorie geselecteerd hebt, zal het onderdeel dat hier het meeste bij hoort automatisch rood worden.",
-                                    "Als je klaar bent met selecteren van de componenten en je weet zeker dat alle benodigde onderdelen aanwezig zijn (minimaal een per categorie) en je hebt je computer besteld via de goedkoopste website, kun je aan de slag gaan met het in elkaar zetten van jouw computer",
-                                    "Laten we beginnen!"
-                                    };
+    public static List<GuidePage> pageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guides);
+        pageList = GetGuidePages.getPageList();
 
         int id = getIntent().getIntExtra("id", 0);
 
@@ -38,7 +38,8 @@ public class Guides extends FragmentActivity implements
         actionBar.setHomeButtonEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        for (String tab_name : tabs) {
+        for (int i = 0; i < pageList.size(); i++){
+            String tab_name = pageList.get(i).getTabName();
             actionBar.addTab(actionBar.newTab().setText(tab_name)
                     .setTabListener(this));
         }
@@ -84,19 +85,19 @@ public class Guides extends FragmentActivity implements
     }
 
     public static int getTabsSize(){
-        return tabs.length;
+        return pageList.size();
     }
 
     public static int getTextsSize(){
-        return texts.length;
+        return pageList.size();
     }
 
     public static String getTabById(int id){
-        return tabs[id];
+        return pageList.get(id).getTabName();
     }
 
     public static String getTextById(int id){
-        return texts[id];
+        return pageList.get(id).getText();
     }
 
 }

@@ -11,7 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.DDB.R;
-
+/**
+ * Created by MarK.
+ */
 public class GuideChooser extends Activity {
 
     @Override

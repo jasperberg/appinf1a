@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.DDB.R;
-
 /**
  * Created by MarK on 11-Jun-14.
  */

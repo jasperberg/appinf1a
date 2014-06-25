@@ -36,7 +36,7 @@
         android:background="#FF3333"
         android:onClick="openMyComputer"
         android:clickable="true"
-        android:layout_weight="0.03"
+        android:layout_weight="0.04"
         android:gravity="center" />
     <TextView
         android:layout_width="match_parent"
@@ -50,10 +50,20 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Guides"
         android:background="#FF3333"
-        android:layout_weight="0.03"
+        android:layout_weight="0.04"
         android:clickable="true"
         android:gravity="center"
         android:onClick="openGuides" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/imageView"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ad"
+        android:clickable="true"
+        android:onClick="openAd" />
+
     <TextView
         android:layout_width="331dp"
         android:layout_height="wrap_content"

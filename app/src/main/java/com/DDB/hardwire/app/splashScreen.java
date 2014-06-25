@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.DDB.R;
-
+/**
+ * Created by Jasper on 20-May-14.
+ */
 public class SplashScreen extends Activity {
 
     // Splash screen timer
@@ -17,6 +19,7 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         new GetItems().execute();
+        new GetGuidePages().execute();
 
         new Handler().postDelayed(new Runnable() {
 
