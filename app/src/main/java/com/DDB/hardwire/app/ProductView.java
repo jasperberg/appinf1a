@@ -47,6 +47,17 @@ public class ProductView extends Activity implements Serializable {
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(GetItems.getProductLister().size() == 0){
+            new GetItems().execute();
+        }
+        if(GetGuidePages.getPageList().size() == 0){
+            new GetGuidePages().execute();
+        }
+    }
+
     private void populate(){
         int size = Products.size();
         for(int i = 0; i < size; i++ ){

@@ -60,6 +60,12 @@ public class InsideCategory extends Activity implements Serializable {
     @Override
     public void onResume(){
         super.onResume();
+        if(GetItems.getProductLister().size() == 0){
+            new GetItems().execute();
+        }
+        if(GetGuidePages.getPageList().size() == 0){
+            new GetGuidePages().execute();
+        }
         populateList();
     }
 

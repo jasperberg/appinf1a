@@ -61,8 +61,14 @@ public class MyComputer extends Activity {
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
+        if (GetItems.getProductLister().size() == 0) {
+            new GetItems().execute();
+        }
+        if (GetGuidePages.getPageList().size() == 0) {
+            new GetGuidePages().execute();
+        }
         changeTitle();
         populateList();
     }
@@ -79,13 +85,8 @@ public class MyComputer extends Activity {
             case R.id.change_name:
                 changeName();
                 return true;
-            case R.id.edit_buid:
-                Toast.makeText(getApplicationContext(), "Now editing", Toast.LENGTH_LONG).show();
-                return true;
             case R.id.delete_build:
                 deleteDialog();
-                return true;
-            case R.id.share_build:
                 return true;
             case R.id.settings:
                 Intent intent = new Intent(this, SettingsActivity.class);

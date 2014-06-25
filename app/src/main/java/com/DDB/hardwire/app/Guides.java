@@ -8,6 +8,7 @@ import android.app.ActionBar;
 
 import com.DDB.R;
 import android.app.ActionBar.Tab;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,14 +45,20 @@ public class Guides extends FragmentActivity implements
                     .setTabListener(this));
         }
 
-        if(id == 0) {
-            viewPager.setCurrentItem(0);
-            actionBar.setSelectedNavigationItem(0);
-        }
+        if(pageList.size() != 0) {
+            if (id == 0) {
+                viewPager.setCurrentItem(0);
+                actionBar.setSelectedNavigationItem(0);
+            }
 
-        if(id == 1) {
-            viewPager.setCurrentItem(3);
-            actionBar.setSelectedNavigationItem(3);
+            if (id == 1) {
+                viewPager.setCurrentItem(3);
+                actionBar.setSelectedNavigationItem(3);
+            }
+        }
+        else{
+            Toast.makeText(getApplicationContext(), "Er zijn geen guides geladen", Toast.LENGTH_SHORT).show();
+            this.finish();
         }
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {

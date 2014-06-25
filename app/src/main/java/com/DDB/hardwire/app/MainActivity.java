@@ -40,6 +40,23 @@ public class MainActivity extends Activity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
+        if(GetItems.getProductLister().size() == 0){
+            new GetItems().execute();
+        }
+        if(GetGuidePages.getPageList().size() == 0){
+            new GetGuidePages().execute();
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(GetItems.getProductLister().size() == 0){
+            new GetItems().execute();
+        }
+        if(GetGuidePages.getPageList().size() == 0){
+            new GetGuidePages().execute();
+        }
     }
 
     @Override

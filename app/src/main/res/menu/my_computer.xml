@@ -9,15 +9,8 @@
     <item android:id="@+id/delete_build"
         android:title="Verwijder Computer" />
 
-    <item android:id="@+id/edit_buid"
-        android:title="Pas Computer aan" />
-
-    <item android:id="@+id/share_build"
-        android:title="Deel computer" />
-
     <item android:id="@+id/settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
         app:showAsAction="never" />
-
 </menu>
