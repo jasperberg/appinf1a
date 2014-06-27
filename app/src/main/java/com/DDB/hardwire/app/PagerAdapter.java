@@ -2,6 +2,7 @@ package com.DDB.hardwire.app;
 
 /**
  * Created by MarK on 11-Jun-14.
+ * The fragment manager for the guides.
  */
 
 import android.support.v4.app.Fragment;

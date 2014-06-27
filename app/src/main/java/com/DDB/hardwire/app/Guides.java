@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by MarK on 25-Jun-14.
+ * The code that drives the guide pages, including tabs and fragment loader.
  */
 public class Guides extends FragmentActivity implements
         ActionBar.TabListener {

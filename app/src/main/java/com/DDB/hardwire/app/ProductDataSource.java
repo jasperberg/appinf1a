@@ -2,6 +2,7 @@ package com.DDB.hardwire.app;
 
 /**
  * Created by MarK on 22-May-14.
+ * The class that communicates with the database and writes or reads data.
  */
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 
 public class ProductDataSource {
 
-    // Database fields
     private SQLiteDatabase database;
     private MySQLiteHelper dbHelper;
 

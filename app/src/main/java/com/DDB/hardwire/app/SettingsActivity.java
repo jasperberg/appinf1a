@@ -6,6 +6,7 @@ import android.preference.PreferenceActivity;
 import com.DDB.R;
 /**
  * Created by MarK on 20-Jun-14.
+ * The settings.
  */
 public class SettingsActivity extends PreferenceActivity{
 

@@ -2,16 +2,11 @@ package com.DDB.hardwire.app;
 
 /**
  * Created by Jasper on 22-May-14.
+ * The downloader we use to get JSON files.
  */
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -36,8 +31,6 @@ public class ServiceHandler {
 
     /**
      * Making service call
-     * @url - url to make request
-     * @method - http request method
      * */
     public String makeServiceCall(String url, int method) {
         return this.makeServiceCall(url, method, null);
@@ -45,15 +38,12 @@ public class ServiceHandler {
 
     /**
      * Making service call
-     * @url - url to make request
-     * @method - http request method
-     * @params - http request params
      * */
     public String makeServiceCall(String url, int method,
                                   List<NameValuePair> params) {
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
-            HttpEntity httpEntity = null;
+            HttpEntity httpEntity;
             HttpResponse httpResponse = null;
 
             if (method == POST) {

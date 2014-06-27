@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by Jasper on 23-May-14.
+ * Getting the products from an online JSON file and parsing them to products.
  */
 public class GetItems extends AsyncTask<Void, Void, Void> {
     static List<Product> productLister = new ArrayList<Product>();

@@ -21,12 +21,12 @@ import android.widget.Toast;
 
 import com.DDB.R;
 
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by MarK on 29-May-14.
+ * The code behind the computer build screen.
  */
 public class MyComputer extends Activity {
 
@@ -144,7 +144,7 @@ public class MyComputer extends Activity {
         datasource.open();
         build = datasource.getAllProducts();
         datasource.close();
-        setPrice();
+        calculatePrice();
         ArrayAdapter<Product> adapter = new myComputerAdapter();
         myComputerView.setAdapter(adapter);
         changeTitle();
@@ -217,7 +217,7 @@ public class MyComputer extends Activity {
         datasource.close();
     }
 
-    public void setPrice(){
+    public void calculatePrice(){
         double locprice = 0;
         for(int i = 0; i < build.size(); i++){
             locprice = locprice + build.get(i).getProductPrice();

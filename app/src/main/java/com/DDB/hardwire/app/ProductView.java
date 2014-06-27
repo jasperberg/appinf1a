@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by MarK on 29-May-14.
+ * The view that shows the information of a product.
  */
 public class ProductView extends Activity implements Serializable {
     String Name, Description, ListId;

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * Created by MarK on 29-May-14.
+ * The product list of 1 Category
  */
 public class InsideCategory extends Activity implements Serializable {
 
@@ -39,7 +40,7 @@ public class InsideCategory extends Activity implements Serializable {
         setContentView(R.layout.activity_inside_category);
         setTitle(_category);
         productListView = (ListView) findViewById(R.id.listView);
-        addProduct();
+        getProducts();
         populateList();
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -93,7 +94,7 @@ public class InsideCategory extends Activity implements Serializable {
         _category = category;
     }
 
-    public void addProduct(){
+    public void getProducts(){
         GetItems GI = new GetItems();
         Products = GI.getProductLister();
         int listLength = Products.size();
@@ -105,7 +106,6 @@ public class InsideCategory extends Activity implements Serializable {
     }
 
     private void populateList(){
-
         ArrayAdapter<Product> adapter = new ProductListAdapter();
         productListView.setAdapter(adapter);
     }

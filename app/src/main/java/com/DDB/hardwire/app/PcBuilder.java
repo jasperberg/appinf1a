@@ -14,6 +14,7 @@ import java.util.List;
 import com.DDB.R;
 /**
  * Created by MarK on 29-May-14.
+ * The product categorie's list.
  */
 public class PcBuilder extends Activity {
 
@@ -63,6 +64,9 @@ public class PcBuilder extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Creating the data for the expandable listadapter with categories.
+     */
     public static void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();

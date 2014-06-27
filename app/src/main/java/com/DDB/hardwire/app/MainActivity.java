@@ -33,19 +33,7 @@ public class MainActivity extends Activity {
         datasource.open();
         build = datasource.getAllProducts();
         haveNetworkConnection();
-        Context context = getApplicationContext();
-        if (!haveNetworkConnection()){
-            CharSequence text = "Geen internetconnectie, producten kunnen niet geladen worden";
-            int duration = Toast.LENGTH_LONG;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        if(GetItems.getProductLister().size() == 0){
-            new GetItems().execute();
-        }
-        if(GetGuidePages.getPageList().size() == 0){
-            new GetGuidePages().execute();
-        }
+        checkConnection();
     }
 
     @Override
@@ -73,6 +61,21 @@ public class MainActivity extends Activity {
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void checkConnection(){
+        if (!haveNetworkConnection()){
+            CharSequence text = "Geen internetconnectie, producten kunnen niet geladen worden";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+            toast.show();
+        }
+        if(GetItems.getProductLister().size() == 0){
+            new GetItems().execute();
+        }
+        if(GetGuidePages.getPageList().size() == 0){
+            new GetGuidePages().execute();
+        }
     }
 
     private boolean haveNetworkConnection() {
@@ -133,6 +136,9 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * Checking to see if there's a Processor or Motherboard in the build.
+     */
     public static void indexAddedProducts(){
         addedProcessor = "Empty";
         addedMotherboard = "Empty";

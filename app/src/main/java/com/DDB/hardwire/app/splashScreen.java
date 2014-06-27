@@ -8,6 +8,7 @@ import android.os.Handler;
 import com.DDB.R;
 /**
  * Created by Jasper on 20-May-14.
+ * Splashscreen including timer.
  */
 public class SplashScreen extends Activity {
 

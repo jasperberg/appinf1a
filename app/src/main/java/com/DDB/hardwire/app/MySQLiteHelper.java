@@ -2,6 +2,7 @@ package com.DDB.hardwire.app;
 
 /**
  * Created by MarK on 22-May-14.
+ * The code that creates the Database.
  */
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
